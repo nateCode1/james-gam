@@ -22,11 +22,15 @@ public class PlayerController : MonoBehaviour
         // TODO: max speed 
         Vector3 currentVelocity = wheel.velocity;
         // Calculates player speed
-        Vector3 playerForce = accelerationSpeed * (Input.GetAxis("Forward") * player.forward + Input.GetAxis("Sideways") * player.right);
+        Vector3 playerInputForce = accelerationSpeed * (Input.GetAxisRaw("Forward") * player.forward + Input.GetAxisRaw("Sideways") * player.right).normalized;
         // Calculates friction
-        Vector3 frictionForce = (playerForce.normalized - currentVelocity.normalized) * friction;
+        Vector3 frictionForce = -currentVelocity * friction;
+        // If nothing is being pressed, boost your friction to stop you faster
+        if (playerInputForce.magnitude < 0.1) {
+            frictionForce /= responsiveness;
+        }
         // Adds the force
-        wheel.AddForce(playerForce + frictionForce, ForceMode.Acceleration);
+        wheel.AddForce(playerInputForce + frictionForce, ForceMode.Acceleration);
 
     }
 }
