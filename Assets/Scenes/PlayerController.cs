@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
             // If nothing is being pressed, boost your friction to stop you faster
             if (playerInputForce.magnitude < 0.1) {
                 frictionForce *= responsiveness;
+                wheel.angularDrag = 0.8f;
+            } else {
+                wheel.angularDrag = 0.05f;
             }
         }
         // Adds the force
