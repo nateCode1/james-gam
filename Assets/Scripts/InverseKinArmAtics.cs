@@ -13,20 +13,22 @@ public class InverseKinArmAtics : MonoBehaviour
     public Transform debugSphere;
     public Transform debugSphere2;
     private Vector3 oldElbowPosition;
-    private Vector3 oldHandPosition;
+    protected Vector3 oldHandPosition;
     private Transform playerControllerTransform;
     private float oldShoulderAngle;
 
-    void Start() {
+    protected float armRadius;
+
+    protected void Start() {
         playerControllerTransform = GetComponent<Transform>();
     }
 
-    void Update() {
+    protected void Update() {
         // Gets the upper arm length (side a in the cosine law)
         float upperArmLength = upperArm.GetChild(0).localScale.y * 2;
         // Gets the lower arm length (side b in the cosine law)
         float lowerArmLength = lowerArm.GetChild(0).localScale.y * 2;
-        float armRadius = upperArmLength + lowerArmLength;
+        armRadius = upperArmLength + lowerArmLength;
         // Gets the distance to the target point (side c in the cosine law)
         Vector3 newHandPosition = targetPoint - shoulder.position; // ROUNDING ERROR?
         float targetDistance = newHandPosition.magnitude;
