@@ -9,10 +9,11 @@ public class ArmsController : MonoBehaviour
     public InverseKinArmAtics armRight;
     public Camera playerCamera;
     public Transform debugSphere;
+    public LayerMask target;
 
     void FixedUpdate() {
         RaycastHit raycastHit;
-        Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out raycastHit, 100, 64);
+        Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out raycastHit, 100, target);
         Vector3 hitLocation = raycastHit.point;
         if(hitLocation != new Vector3(0,0,0)){
             debugSphere.position = hitLocation;

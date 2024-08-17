@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float airAccelerationModifier = 0.2f;
     private Transform player;
     public Rigidbody wheel;
+    public LayerMask groundLayers;
 
     void Start()
     {
@@ -59,6 +60,6 @@ public class PlayerController : MonoBehaviour
     }
 
     bool getGrounded() {
-        return Physics.CheckBox(player.position + new Vector3(0, -0.5f, 0), new Vector3(0.4f, 0.2f, 0.4f), Quaternion.identity, 64);
+        return Physics.CheckBox(player.position + new Vector3(0, -0.5f, 0), new Vector3(0.4f, 0.2f, 0.4f), Quaternion.identity, groundLayers);
     }
 }
