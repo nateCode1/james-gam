@@ -1494,8 +1494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2060b7aa19b8094a95e567a8648a4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armLeft: {fileID: 7302335452681481085}
-  armRight: {fileID: 8797924315479020231}
+  arms:
+  - {fileID: 350121404858219060}
+  - {fileID: 8161285138713747489}
   playerCamera: {fileID: 8220181198258531654}
   debugSphere: {fileID: 8103976452345257279}
 --- !u!1001 &3784791458350012541
