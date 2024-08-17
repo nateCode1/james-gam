@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class InverseKinArmAtics : MonoBehaviour
 {
-    public bool isRightArm = false;
     public Vector3 targetPoint;
     public Transform shoulder;
     public Transform upperArm;
@@ -14,6 +13,11 @@ public class InverseKinArmAtics : MonoBehaviour
     public Transform debugSphere2;
     private Vector3 elbowPosition;
     private Vector3 handPosition;
+    private Transform playerControllerTransform;
+
+    void Start() {
+        playerControllerTransform = GetComponent<Transform>();
+    }
 
     void Update() {
         // Gets the upper arm length (side a in the cosine law)
@@ -29,17 +33,13 @@ public class InverseKinArmAtics : MonoBehaviour
         float targetDistance = (handPosition - shoulder.position).magnitude;
         // Calculates the shoulder angle in radians (gamma in the cosine law)
         float shoulderAngle = Mathf.Acos((Mathf.Pow(upperArmLength, 2) + Mathf.Pow(targetDistance, 2) - Mathf.Pow(lowerArmLength, 2)) / (2 * upperArmLength * targetDistance));
-        shoulderAngle += Vector3.Angle(Vector3.forward, handPosition - shoulder.position) * Mathf.Deg2Rad;
+        shoulderAngle += Vector3.Angle(playerControllerTransform.forward, handPosition - shoulder.position) * Mathf.Deg2Rad;
         // The angle is NaN when it should be exactly 180 degrees
         if (float.IsNaN(shoulderAngle)){
             shoulderAngle = Mathf.PI / 2.0f;
         }
-        // This should already be be handled by flipping the object but it isn't. Sorry!
-        if (isRightArm) {
-            shoulderAngle = -shoulderAngle;
-        }
         // Uses basic trig to calculate the elbow's position
-        elbowPosition = shoulder.position + Vector3.left * upperArmLength * Mathf.Sin(shoulderAngle) + Vector3.forward * upperArmLength * Mathf.Cos(shoulderAngle);
+        elbowPosition = shoulder.position + -playerControllerTransform.right * upperArmLength * Mathf.Sin(shoulderAngle) + playerControllerTransform.forward * upperArmLength * Mathf.Cos(shoulderAngle);
         debugSphere.position = handPosition;
         debugSphere2.position = targetPoint;
 
