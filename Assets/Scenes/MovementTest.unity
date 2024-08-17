@@ -335,11 +335,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7302335452681481085, guid: 7f4cdd09876ead5458c14df11ec86667,
         type: 3}
-      propertyPath: shoulder
-      value: 
-      objectReference: {fileID: 1867588269}
-    - target: {fileID: 7302335452681481085, guid: 7f4cdd09876ead5458c14df11ec86667,
-        type: 3}
       propertyPath: armRadius
       value: 1.65
       objectReference: {fileID: 0}
@@ -351,7 +346,7 @@ PrefabInstance:
     - target: {fileID: 8283883830736103655, guid: 7f4cdd09876ead5458c14df11ec86667,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8332824404481494177, guid: 7f4cdd09876ead5458c14df11ec86667,
         type: 3}
@@ -576,12 +571,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1867588269 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1875381945166349612, guid: 7f4cdd09876ead5458c14df11ec86667,
-    type: 3}
-  m_PrefabInstance: {fileID: 1183847539}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
