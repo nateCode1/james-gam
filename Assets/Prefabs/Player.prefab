@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 6187996635058099646}
   - component: {fileID: 1879367136656844077}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1383,6 +1383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4166373865164333053}
   - component: {fileID: 3191015185811352756}
+  - component: {fileID: 5901620743219149218}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -1426,3 +1427,16 @@ MonoBehaviour:
   friction: 2.5
   airAccelerationModifier: 0.2
   wheel: {fileID: 1112695676155687744}
+--- !u!114 &5901620743219149218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105454408725018738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33106d4842e0c4047a3f15b442464b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 2.23
