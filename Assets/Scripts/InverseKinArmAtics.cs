@@ -68,12 +68,11 @@ public class InverseKinArmAtics : MonoBehaviour
         oldHandPosition = handPosition;
     }
 
-    //deprecated
-    Vector3 RoundVector3 (Vector3 toRound) {
-        Vector3 toReturn = new Vector3();
-        toReturn.x = Mathf.Round(toRound.x * 100) / 100;
-        toReturn.y = Mathf.Round(toRound.y * 100) / 100;
-        toReturn.z = Mathf.Round(toRound.z * 100) / 100;
-        return toReturn;
+    public void activate() {
+        Debug.Log("THIS DEFAULT ARM WAS CLICKED!!!!!!!!!");
     }
+    public void held() {
+        Debug.Log("THIS DEFAULT ARM WAS HELD DOWN!!!!!!!!!");
+    }
+
 }
