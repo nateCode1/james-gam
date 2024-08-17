@@ -16,7 +16,7 @@ public class Explode : MonoBehaviour
             ExplodeBomb();
         }
     }
-    void ExplodeBomb()
+    public void ExplodeBomb()
     {
         Vector3 explosionPos = transform.position;
         Instantiate(myParticleSystem, explosionPos, Quaternion.identity);

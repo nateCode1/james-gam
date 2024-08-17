@@ -65,11 +65,14 @@ public class InverseKinArmAtics : MonoBehaviour
         oldHandPosition = handPosition;
     }
 
-    public void Activate() {
+    public void Pressed() {
         Debug.Log("THIS DEFAULT ARM WAS CLICKED!!!!!!!!!");
     }
     public void Held() {
         Debug.Log("THIS DEFAULT ARM WAS HELD DOWN!!!!!!!!!");
+    }
+    public void LetGo() {
+        Debug.Log("THIS DEFAULT ARM WAS LET GO!!!!!!!!!");
     }
 
 }
