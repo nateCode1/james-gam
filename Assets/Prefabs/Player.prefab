@@ -1421,10 +1421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6193b534898d12047a30940de7abe420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationSpeed: 12
-  maxSpeed: 10
-  responsiveness: 2
-  friction: 2.5
+  acceleration: 500
+  responsiveness: 300
+  friction: 50
   airAccelerationModifier: 0.2
   wheel: {fileID: 1112695676155687744}
 --- !u!114 &5901620743219149218
@@ -1439,4 +1438,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33106d4842e0c4047a3f15b442464b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 2.23
+  sensitivity: 3.31
