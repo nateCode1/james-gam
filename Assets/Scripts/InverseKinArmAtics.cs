@@ -15,6 +15,7 @@ public class InverseKinArmAtics : MonoBehaviour
     private Vector3 oldElbowPosition;
     private Vector3 oldHandPosition;
     private Transform playerControllerTransform;
+    private float oldShoulderAngle;
 
     void Start() {
         playerControllerTransform = GetComponent<Transform>();
@@ -27,20 +28,23 @@ public class InverseKinArmAtics : MonoBehaviour
         float lowerArmLength = lowerArm.GetChild(0).localScale.y * 2;
         float armRadius = upperArmLength + lowerArmLength;
         // Gets the distance to the target point (side c in the cosine law)
-        Vector3 newHandPosition = targetPoint - shoulder.position; // ROUNDING ERROR!!!!!!!!!!!!!!
+        Vector3 newHandPosition = targetPoint - shoulder.position; // ROUNDING ERROR?
+        float targetDistance = newHandPosition.magnitude;
         if (newHandPosition.magnitude > armRadius){
             newHandPosition = newHandPosition.normalized * armRadius;
+            targetDistance = armRadius - 0.01f; // I HATE YOU!!!!!!!!!!!!
         }
-        float targetDistance = newHandPosition.magnitude;
         // Calculates the shoulder angle in radians (gamma in the cosine law)
         float shoulderAngle = Mathf.Acos((Mathf.Pow(upperArmLength, 2) + Mathf.Pow(targetDistance, 2) - Mathf.Pow(lowerArmLength, 2)) / (2 * upperArmLength * targetDistance));
-        shoulderAngle += Vector3.Angle(playerControllerTransform.forward, newHandPosition) * Mathf.Deg2Rad; // TRY CHANING TO VECTOR3.FORWARD!!!
-        // The angle is NaN when it should be exactly 180 degrees
-        if (float.IsNaN(shoulderAngle)){
-            shoulderAngle = Mathf.PI / 2.0f;
+        shoulderAngle += Vector3.Angle(playerControllerTransform.forward, newHandPosition) * Mathf.Deg2Rad;
+
+        if (float.IsNaN(shoulderAngle)) {
+            shoulderAngle = oldShoulderAngle;
         }
+        oldShoulderAngle = shoulderAngle;
+
         // Uses basic trig to calculate the elbow's position
-        Vector3 newElbowPosition = -playerControllerTransform.right * upperArmLength * Mathf.Sin(shoulderAngle) + playerControllerTransform.forward * upperArmLength * Mathf.Cos(shoulderAngle);
+        Vector3 newElbowPosition = Mathf.Sin(shoulderAngle) * upperArmLength * -playerControllerTransform.right + Mathf.Cos(shoulderAngle) * upperArmLength * playerControllerTransform.forward;
         
         if (debugSphere) {
             debugSphere.position = shoulder.position + newHandPosition;
