@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject cameraControl;
 
     void Update()
     {
@@ -43,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider sensitivitySlider;
     
     private void Awake ()
     {
@@ -51,10 +53,20 @@ public class PauseMenu : MonoBehaviour
             SetVolume(PlayerPrefs.GetFloat("Volume"));
             volumeSlider.value = PlayerPrefs.GetFloat("Volume");
         }
+        if (PlayerPrefs.HasKey("Sensitivity"))
+        {
+            cameraControl.GetComponent<CameraController>().SetSensitivity(PlayerPrefs.GetFloat("Sensitivity"));
+            sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
+        }
     }
     public void SetVolume (float volume)
     {
         AudioListener.volume = volume;
         PlayerPrefs.SetFloat("Volume", volume);
+    }
+
+    public void SetSensitivity (float sensitivity)
+    {
+        PlayerPrefs.SetFloat("Sensitivity", sensitivity);
     }
 }
