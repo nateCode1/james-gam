@@ -49,9 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70723d30cc671d043a7ec009fc1c3bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightArm: 0
   targetPoint: {x: 0, y: 0, z: 0}
-  shoulder: {fileID: 0}
+  shoulder: {fileID: 1875381945166349612}
   upperArm: {fileID: 6565885633047734245}
   lowerArm: {fileID: 2621839858110936375}
   debugSphere: {fileID: 3808858634658525449}
@@ -1219,7 +1218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70723d30cc671d043a7ec009fc1c3bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRightArm: 0
   targetPoint: {x: 0, y: 0, z: 0}
   shoulder: {fileID: 4512886964773499889}
   upperArm: {fileID: 3623023649479555271}
