@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
         oldY = newY;
     }
 
-    public void setSensitivity (float newSens) {
+    public void SetSensitivity (float newSens) {
         sensitivity = newSens;
     }
 }
