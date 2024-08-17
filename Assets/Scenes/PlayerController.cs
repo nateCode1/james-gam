@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 10;
     public float responsiveness = 1;
     public float friction = 0.5f;
+    public float airAccelerationModifier = 0.2f;
     private Transform player;
     public Rigidbody wheel;
 
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         // Calculates friction
         Vector3 frictionForce = Vector3.zero;
         if (getGrounded()) {
+            //Debug.Log("I am grounded :O");
             frictionForce = -currentVelocity * friction;
             // If nothing is being pressed, boost your friction to stop you faster
             if (playerInputForce.magnitude < 0.1) {
@@ -40,6 +42,8 @@ public class PlayerController : MonoBehaviour
             } else {
                 wheel.angularDrag = 0.05f;
             }
+        } else {
+            playerInputForce *= airAccelerationModifier;
         }
         // Adds the force
         wheel.AddForce(playerInputForce + frictionForce, ForceMode.Acceleration);
@@ -50,6 +54,6 @@ public class PlayerController : MonoBehaviour
     }
 
     bool getGrounded() {
-        return Physics.CheckBox(player.position + new Vector3(0, -1, 0), new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity, 64);
+        return Physics.CheckBox(player.position + new Vector3(0, -0.5f, 0), new Vector3(0.5f, 0.2f, 0.5f), Quaternion.identity, 64);
     }
 }
