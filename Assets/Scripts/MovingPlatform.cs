@@ -10,11 +10,13 @@ public class MovingPlatform : MonoBehaviour
 
     private Vector3 targetPosition;
     private bool isPaused;
+    private Rigidbody rb;
 
     void Start()
     {
         targetPosition = pointA.position;
         isPaused = false;
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -22,7 +24,8 @@ public class MovingPlatform : MonoBehaviour
         if (!isPaused)
         {
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+            // transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+            rb.Move(Vector3.MoveTowards(transform.position, targetPosition, step), transform.rotation);
 
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
