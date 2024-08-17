@@ -12,21 +12,24 @@ public class ArmsController : MonoBehaviour
     public Camera playerCamera;
     public Transform debugSphere;
     public LayerMask target;
+    public int rayTestLength = 100;
 
     void FixedUpdate() {
         RaycastHit raycastHit;
-        Physics.Raycast(playerCamera.ScreenPointToRay(Input.mousePosition), out raycastHit, 100, target);
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out raycastHit, rayTestLength, target);
         Vector3 hitLocation = raycastHit.point;
-        if(hitLocation != new Vector3(0,0,0)){
-            debugSphere.position = hitLocation;
-            if (!leftArm.IsUnityNull()){
-                InverseKinArmAtics leftArmAtics = leftArm.GetComponent<InverseKinArmAtics>();
-                leftArmAtics.targetPoint = hitLocation;
-            }
-            if (!rightArm.IsUnityNull()){
-                InverseKinArmAtics rightArmAtics = rightArm.GetComponent<InverseKinArmAtics>();
-                rightArmAtics.targetPoint = hitLocation;
-            }
+        if (hitLocation == new Vector3(0,0,0)) {
+            hitLocation = leftShoulder.position + ray.direction.normalized * rayTestLength;
+        }
+        debugSphere.position = hitLocation;
+        if (!leftArm.IsUnityNull()){
+            InverseKinArmAtics leftArmAtics = leftArm.GetComponent<InverseKinArmAtics>();
+            leftArmAtics.targetPoint = hitLocation;
+        }
+        if (!rightArm.IsUnityNull()){
+            InverseKinArmAtics rightArmAtics = rightArm.GetComponent<InverseKinArmAtics>();
+            rightArmAtics.targetPoint = hitLocation;
         }
     }
 
