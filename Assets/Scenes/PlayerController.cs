@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
         // Calculates friction
         Vector3 frictionForce = Vector3.zero;
         if (getGrounded()) {
-            Debug.Log("here");
             frictionForce = -currentVelocity * friction;
             // If nothing is being pressed, boost your friction to stop you faster
             if (playerInputForce.magnitude < 0.1) {
