@@ -16,6 +16,7 @@ public class InverseKinArmAtics : MonoBehaviour
     protected Vector3 oldHandPosition;
     private Transform playerControllerTransform;
     private float oldShoulderAngle;
+    public Vector3 actualHandPos;
 
     protected float armRadius;
 
@@ -47,13 +48,6 @@ public class InverseKinArmAtics : MonoBehaviour
 
         // Uses basic trig to calculate the elbow's position
         Vector3 newElbowPosition = Mathf.Sin(shoulderAngle) * upperArmLength * -playerControllerTransform.right + Mathf.Cos(shoulderAngle) * upperArmLength * playerControllerTransform.forward;
-        
-        if (debugSphere) {
-            debugSphere.position = shoulder.position + newHandPosition;
-        }
-        if (debugSphere2) {
-            debugSphere2.position = targetPoint;
-        }
 
         // Updates the arms to match the math
         // Also smooths the movement of the visual arms
@@ -66,12 +60,21 @@ public class InverseKinArmAtics : MonoBehaviour
 
         oldElbowPosition = elbowPosition;
         oldHandPosition = handPosition;
+
+        actualHandPos = elbowPosition + lowerArmLength * lowerArm.forward;
+
+        if (debugSphere) {
+            debugSphere.position = actualHandPos;
+        }
+        if (debugSphere2) {
+            debugSphere2.position = targetPoint;
+        }
     }
 
-    public void activate() {
+    public void Activate() {
         Debug.Log("THIS DEFAULT ARM WAS CLICKED!!!!!!!!!");
     }
-    public void held() {
+    public void Held() {
         Debug.Log("THIS DEFAULT ARM WAS HELD DOWN!!!!!!!!!");
     }
 

@@ -5,10 +5,10 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject defaultArm;
+    public GameObject arm;
     void Start()
     {
         ArmsController armsController = player.GetComponent<ArmsController>();
-        armsController.SwitchArm(defaultArm, false);
+        armsController.SwitchArm(arm, false);
     }
 }

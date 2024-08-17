@@ -46,16 +46,16 @@ public class ArmsController : MonoBehaviour
 
     void DetectActions() {
         if (Input.GetMouseButtonDown(0) && leftArm) {
-            leftArm.GetComponent<InverseKinArmAtics>().activate();
+            leftArm.GetComponent<InverseKinArmAtics>().Activate();
         }
         if (Input.GetMouseButton(0) && leftArm) {
-            leftArm.GetComponent<InverseKinArmAtics>().held();
+            leftArm.GetComponent<InverseKinArmAtics>().Held();
         }
         if (Input.GetMouseButtonDown(1) && rightArm) {
-            rightArm.GetComponent<InverseKinArmAtics>().activate();
+            rightArm.GetComponent<InverseKinArmAtics>().Activate();
         }
         if (Input.GetMouseButton(1) && rightArm) {
-            rightArm.GetComponent<InverseKinArmAtics>().held();
+            rightArm.GetComponent<InverseKinArmAtics>().Held();
         }
     }
 }
