@@ -41,8 +41,13 @@ public class InverseKinArmAtics : MonoBehaviour
         }
         // Uses basic trig to calculate the elbow's position
         Vector3 newElbowPosition = -playerControllerTransform.right * upperArmLength * Mathf.Sin(shoulderAngle) + playerControllerTransform.forward * upperArmLength * Mathf.Cos(shoulderAngle);
-        debugSphere.position = shoulder.position + newHandPosition;
-        debugSphere2.position = targetPoint;
+        
+        if (debugSphere) {
+            debugSphere.position = shoulder.position + newHandPosition;
+        }
+        if (debugSphere2) {
+            debugSphere2.position = targetPoint;
+        }
 
         // Updates the arms to match the math
         // Also smooths the movement of the visual arms
