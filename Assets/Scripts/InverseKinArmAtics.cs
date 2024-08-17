@@ -10,8 +10,7 @@ public class InverseKinArmAtics : MonoBehaviour
     public Transform shoulder;
     public Transform upperArm;
     public Transform lowerArm;
-    public Transform debugSphere;
-    public Transform debugSphere2;
+    public Transform hand;
     private Vector3 oldElbowPosition;
     protected Vector3 oldHandPosition;
     private Transform playerControllerTransform;
@@ -53,22 +52,17 @@ public class InverseKinArmAtics : MonoBehaviour
         // Also smooths the movement of the visual arms
         Vector3 elbowPosition = Vector3.Lerp(shoulder.position + newElbowPosition, oldElbowPosition, smoothing);
         Vector3 handPosition = Vector3.Lerp(shoulder.position + newHandPosition, oldHandPosition, smoothing);
+        
+        actualHandPos = elbowPosition + lowerArmLength * lowerArm.forward;
 
         upperArm.LookAt(elbowPosition);
         lowerArm.position = elbowPosition;
         lowerArm.LookAt(handPosition);
+        hand.position = actualHandPos;
+        hand.LookAt(actualHandPos + lowerArm.forward);
 
         oldElbowPosition = elbowPosition;
         oldHandPosition = handPosition;
-
-        actualHandPos = elbowPosition + lowerArmLength * lowerArm.forward;
-
-        if (debugSphere) {
-            debugSphere.position = actualHandPos;
-        }
-        if (debugSphere2) {
-            debugSphere2.position = targetPoint;
-        }
     }
 
     public void Activate() {
