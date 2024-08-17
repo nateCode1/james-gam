@@ -1469,6 +1469,9 @@ MonoBehaviour:
   friction: 50
   airAccelerationModifier: 0.2
   wheel: {fileID: 1112695676155687744}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 321
 --- !u!114 &5901620743219149218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,11 +1497,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2060b7aa19b8094a95e567a8648a4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arms:
-  - {fileID: 350121404858219060}
-  - {fileID: 8161285138713747489}
+  armLeft: {fileID: 7302335452681481085}
+  armRight: {fileID: 8797924315479020231}
   playerCamera: {fileID: 8220181198258531654}
   debugSphere: {fileID: 8103976452345257279}
+  target:
+    serializedVersion: 2
+    m_Bits: 65
 --- !u!1001 &3784791458350012541
 PrefabInstance:
   m_ObjectHideFlags: 0
