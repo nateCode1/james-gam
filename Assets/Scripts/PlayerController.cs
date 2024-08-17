@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
             stoppingForce = (-currentVelocity + Vector3.Project(currentVelocity, playerInputForce)) * responsiveness;
             // If nothing is being pressed, boost your angular drag to slow your spinning
             if (playerInputForce.magnitude < 0.1) {
-                wheel.angularDrag = 0.8f;
+                wheel.angularDrag = 0.99f;
             } else {
                 wheel.angularDrag = 0.05f;
             }
