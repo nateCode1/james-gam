@@ -27,9 +27,10 @@ public class MinigameArm : MonoBehaviour
             rotational_speed = rotational_speed + rotational_accel;
         }
         transform.eulerAngles += rotation * rotational_speed;
-        if (rotational_speed > 10000) {
-            if(Input.GetButtonUp("mouse 0")) {
-                _rigidbody.constraints = ~ (RigidbodyConstraints2D.FreezePositionX & RigidbodyConstraints2D.FreezePositionY);
+        if (rotational_speed > 100) {
+            if(Input.GetMouseButtonUp(0)) {
+                _rigidbody.constraints &= (~RigidbodyConstraints2D.FreezePositionX & ~RigidbodyConstraints2D.FreezePositionY);
+                _rigidbody.velocity = new Vector3(10,10,0);
             }
         }
     }
