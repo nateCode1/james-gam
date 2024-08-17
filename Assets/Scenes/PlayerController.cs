@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public float friction = 0.5f;
     private Transform player;
     public Rigidbody wheel;
-    public GroundedDetector groundedDetector;
 
     void Start()
     {
@@ -32,7 +31,8 @@ public class PlayerController : MonoBehaviour
         Vector3 playerInputForce = accelerationSpeed * (Input.GetAxisRaw("Forward") * player.forward + Input.GetAxisRaw("Sideways") * player.right).normalized;
         // Calculates friction
         Vector3 frictionForce = Vector3.zero;
-        if (groundedDetector.isGrounded) {
+        if (getGrounded()) {
+            Debug.Log("here");
             frictionForce = -currentVelocity * friction;
             // If nothing is being pressed, boost your friction to stop you faster
             if (playerInputForce.magnitude < 0.1) {
@@ -45,5 +45,9 @@ public class PlayerController : MonoBehaviour
 
     void updatePosition() {
         player.position = wheel.position;
+    }
+
+    bool getGrounded() {
+        return Physics.CheckBox(player.position + new Vector3(0, -1, 0), new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity, 64);
     }
 }
