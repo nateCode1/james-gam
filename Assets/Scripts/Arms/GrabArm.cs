@@ -14,7 +14,6 @@ public class GrabArm : InverseKinArmAtics
 
     public override void VisualUpdate(Vector3 elbowPosition, Vector3 handPosition, float lowerArmLength) {
         if (!isGrabbed) {
-            Debug.Log("HERE!");
             base.VisualUpdate(elbowPosition, handPosition, lowerArmLength);
         } else {
             // Places and rotates the arm segments
