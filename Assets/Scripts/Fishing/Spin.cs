@@ -9,8 +9,6 @@ public class Spin : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Transform arm_movement;
 
-    Vector3 rotation = new Vector3(0,0,1);
-
     private void Awake() {
         _rigidbody = GetComponent<Rigidbody2D>();
         arm_movement = GetComponent<Transform>();
@@ -24,7 +22,7 @@ public class Spin : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0)) {
             rotational_speed = rotational_speed + rotational_accel;
         }
-        transform.eulerAngles -= rotation * rotational_speed;
+       transform.Rotate(Vector3.forward, -rotational_speed);
         if (rotational_speed > 50) {
             rotational_speed -= rotational_speed/400;
         }
