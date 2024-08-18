@@ -14,9 +14,9 @@ public class InverseKinArmAtics : MonoBehaviour
     public Transform lowerArm;
     public Transform hand;
     private Vector3 oldElbowPosition;
-    private Transform playerControllerTransform;
+    protected Transform playerControllerTransform;
     public  Vector3 actualHandPos;
-
+    public Rigidbody playerBody;
     protected float armRadius;
 
     protected void Start() {
@@ -69,13 +69,13 @@ public class InverseKinArmAtics : MonoBehaviour
     }
 
     virtual public void Pressed() {
-        Debug.Log("THIS DEFAULT ARM WAS CLICKED!!!!!!!!!");
+        // This method body is intentionally left blank since this arm has no behaviour. Override me!
     }
     virtual public void Held() {
-        Debug.Log("THIS DEFAULT ARM WAS HELD DOWN!!!!!!!!!");
+        // This method body is intentionally left blank since this arm has no behaviour. Override me!
     }
     virtual public void LetGo() {
-        Debug.Log("THIS DEFAULT ARM WAS LET GO!!!!!!!!!");
+        // This method body is intentionally left blank since this arm has no behaviour. Override me!
     }
 
 }

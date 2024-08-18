@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class ArmsController : MonoBehaviour
 {
     public GameObject leftArm;
     public GameObject rightArm;
+    private InverseKinArmAtics leftArmAtics;
+    private InverseKinArmAtics rightArmAtics;
     public Transform leftShoulder;
     public Transform rightShoulder;
     public Camera playerCamera;
@@ -24,11 +27,9 @@ public class ArmsController : MonoBehaviour
         }
         debugSphere.position = hitLocation;
         if (!leftArm.IsUnityNull()){
-            InverseKinArmAtics leftArmAtics = leftArm.GetComponent<InverseKinArmAtics>();
             leftArmAtics.targetPoint = hitLocation;
         }
         if (!rightArm.IsUnityNull()){
-            InverseKinArmAtics rightArmAtics = rightArm.GetComponent<InverseKinArmAtics>();
             rightArmAtics.targetPoint = hitLocation;
         }
     }
@@ -41,9 +42,14 @@ public class ArmsController : MonoBehaviour
         if (isLeftArm) {
             Destroy(leftArm);
             leftArm = Instantiate(newArm, leftShoulder.position, Quaternion.identity, leftShoulder);
+            leftArmAtics = leftArm.GetComponent<InverseKinArmAtics>();
+            leftArmAtics.playerBody = transform.parent.GetChild(0).GetComponent<Rigidbody>();
+
         } else {
             Destroy(rightArm);
             rightArm = Instantiate(newArm, rightShoulder.position, Quaternion.Euler(new Vector3(0, 180, 0)), rightShoulder);
+            rightArmAtics = rightArm.GetComponent<InverseKinArmAtics>();
+            rightArmAtics.playerBody = transform.parent.GetChild(0).GetComponent<Rigidbody>();
         }
     }
 
