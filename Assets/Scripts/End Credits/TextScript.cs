@@ -12,6 +12,7 @@ public class TextScript : MonoBehaviour
     public Color fadeColor = new Color(0,0,0,1);
     public Color trans = new Color(0,0,0,0);
     public float fadeSpeed = 0.1f;
+    private float timeElapsed = 0.0f;
 
     void Start()
     {
@@ -22,6 +23,9 @@ public class TextScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        credits.color = Color.Lerp(credits.color, fadeColor, fadeSpeed * Time.deltaTime);
+        timeElapsed += Time.deltaTime;
+        if(timeElapsed > 7f){
+            credits.color = Color.Lerp(credits.color, fadeColor, fadeSpeed * Time.deltaTime);
+        }
     }
 }
