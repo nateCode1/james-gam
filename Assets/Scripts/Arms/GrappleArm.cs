@@ -11,6 +11,9 @@ public class GrappleArm : InverseKinArmAtics
     public LayerMask grappleLayers;
     private Vector3 grapplePoint;
     private bool isGrappled = false;
+    public Transform beamStart;
+    public Transform beamEnd; 
+
     public override void Pressed() {
         if (hitObject && (grappleLayers.value & (1 << hitObject.layer)) != 0 && (targetPoint - playerControllerTransform.position).magnitude < maxDistance){ // bitwise bullshit to check if the layer of the hit gameobject is allowed
             grapplePoint = targetPoint;
@@ -25,6 +28,19 @@ public class GrappleArm : InverseKinArmAtics
             targetPoint = grapplePoint;
         }
     }
+
+    public override void VisualUpdate(Vector3 elbowPosition, Vector3 handPosition, float lowerArmLength)
+    {
+        Quaternion oldHandRotation = hand.rotation;
+        base.VisualUpdate(elbowPosition, handPosition, lowerArmLength);
+        if (isGrappled){
+            hand.SetPositionAndRotation(grapplePoint, oldHandRotation);
+        }
+
+        // Beam
+        GetComponent<LineRenderer>().SetPositions(new Vector3[2] {beamStart.position, beamEnd.position});
+    }
+
     public override void LetGo() {
         isGrappled = false;
         playerBody.drag = 0f;
