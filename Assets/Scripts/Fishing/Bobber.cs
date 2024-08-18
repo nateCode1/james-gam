@@ -9,6 +9,8 @@ public class Bobber : MonoBehaviour
     private Spin spin;
     private HingeJoint2D hinge;
     private float velocity;
+    Vector3 startPos;
+    Vector3 startRot;
 
     public GameObject parent;
 
@@ -21,12 +23,15 @@ public class Bobber : MonoBehaviour
 
     void Start()
     {
+        startPos = new Vector3(transform.position.x,transform.position.y,0);
+        startRot = new Vector3(transform.localEulerAngles.x,transform.localEulerAngles.y,transform.localEulerAngles.z);
     }
 
     public void BobberReset(){
-        transform.localEulerAngles = new Vector3(0,0,0);
+        transform.position = startPos;
         transform.parent = parent.transform;
-        _rigidbody.constraints &= (RigidbodyConstraints2D.FreezePositionX & RigidbodyConstraints2D.FreezePositionY);
+        transform.Rotate(Vector3.forward, 0.0f);
+        _rigidbody.constraints = (RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY);
     }
 
     public void BobberRelease() {

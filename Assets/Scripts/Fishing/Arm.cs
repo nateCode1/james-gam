@@ -8,8 +8,10 @@ public class Arm : MonoBehaviour
     public float rotational_speed = 0.0f;
     private Rigidbody2D _rigidbody;
     public bool isCasted = false;
+    public bool didReset = true;
 
     public Bobber theBobber;
+    private float startRot;
 
     Vector3 rotation = new Vector3(0,0,1);
 
@@ -18,7 +20,8 @@ public class Arm : MonoBehaviour
     }
 
     private void Start()
-    {  
+    {
+        startRot = transform.eulerAngles.z;
     }
 
     private void FixedUpdate() {
@@ -35,9 +38,8 @@ public class Arm : MonoBehaviour
         if(rotational_speed > 0){
             rotational_speed -= rotational_speed/1000;
             if(isCasted) {
-                rotational_speed -= rotational_speed/100;
-                if(rotational_speed < 5) {
-                    transform.localEulerAngles = new Vector3(0,0,0);
+                if(transform.eulerAngles.z % 360 == startRot) {
+                    transform.eulerAngles = new Vector3 (0,0,startRot);
                     rotational_speed = 0.0f;
                 }
             }

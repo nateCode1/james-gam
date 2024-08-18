@@ -17,7 +17,8 @@ public class Fish : MonoBehaviour
         if(shouldMove && (transform.position.y < -0.267)) {
             transform.Translate(Vector3.up * Time.deltaTime);
         }
-        if((transform.position.y > -0.269) && shouldMove) {
+        else if(shouldMove) {
+            transform.position = new Vector3 ((float)transform.position.x,-0.267f,(float)transform.position.z);
             shouldMove = false;
             bobber.BobberReset();
          }
