@@ -133,8 +133,6 @@ GameObject:
   - component: {fileID: 689703266}
   - component: {fileID: 689703270}
   - component: {fileID: 689703268}
-  - component: {fileID: 689703271}
-  - component: {fileID: 689703273}
   - component: {fileID: 689703274}
   m_Layer: 0
   m_Name: arm-cube (1)
@@ -194,32 +192,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689703265}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &689703271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689703265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &689703273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689703265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71d056717244166419c4af7192558a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotational_accel: 0.1
-  rotational_speed: 0
 --- !u!233 &689703274
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -631,7 +603,7 @@ Transform:
   m_GameObject: {fileID: 1503959164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0.002, y: 0, z: 1}
   m_LocalScale: {x: 7.68, y: 4.32, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -722,7 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotational_accel: 0.1
   rotational_speed: 0
-  theBobber: {fileID: 689703271}
+  theBobber: {fileID: 2081407206}
 --- !u!1 &1743063149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1052,8 @@ GameObject:
   - component: {fileID: 2081407205}
   - component: {fileID: 2081407204}
   - component: {fileID: 2081407203}
+  - component: {fileID: 2081407206}
+  - component: {fileID: 2081407207}
   m_Layer: 0
   m_Name: bobber
   m_TagString: Untagged
@@ -1181,6 +1155,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 689703266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2081407206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081407201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2081407207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081407201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d056717244166419c4af7192558a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotational_accel: 0.1
+  rotational_speed: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
