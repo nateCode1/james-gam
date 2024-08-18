@@ -13,12 +13,14 @@ public class InverseKinArmAtics : MonoBehaviour
     public Transform upperArm;
     public Transform lowerArm;
     public Transform hand;
+    public GameObject armItem;
     protected Vector3 oldElbowPosition;
     protected Transform playerControllerTransform;
     public  Vector3 actualHandPos;
     public Rigidbody playerBody;
     public GameObject hitObject;
     protected float armRadius;
+
 
     protected void Start() {
         playerControllerTransform = transform.parent.parent;
