@@ -609,4 +609,9 @@ MonoBehaviour:
   hand: {fileID: 1230724261441705123}
   actualHandPos: {x: 0, y: 0, z: 0}
   playerBody: {fileID: 0}
-  grappleForce: 100
+  hitObject: {fileID: 0}
+  grappleForce: 30
+  maxForce: 65
+  grappleLayers:
+    serializedVersion: 2
+    m_Bits: 256
