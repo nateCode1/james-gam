@@ -152,8 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1757613035}
-  armLeft: {fileID: 9024050191856200126, guid: a0c8ded7ec9b939478fa3a36eb87f48f, type: 3}
-  armRight: {fileID: 0}
+  armLeft: {fileID: 9024050191856200126, guid: 968fbd1f79935c4429f95138ab814a79, type: 3}
+  armRight: {fileID: 9024050191856200126, guid: 968fbd1f79935c4429f95138ab814a79,
+    type: 3}
 --- !u!4 &290150701
 Transform:
   m_ObjectHideFlags: 0
