@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class EndCamera : MonoBehaviour
 {
-    public float rotational_speed = 0.0f;
-    private Rigidbody2D _rigidbody;
-    private Transform arm_movement;
-    public float orthoCamera;
+    public Camera orthoCamera;
 
-    Vector3 rotation = new Vector3(0,0,1);
-    Vector3 velocity = new Vector3(0.0005f,-0.0001f,0);
+    Vector3 velocity = new Vector3(0.0005f,-0.00005f,0);
 
     private void Awake() {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        arm_movement = GetComponent<Transform>();
     }
 
     private void Start()
@@ -22,8 +16,18 @@ public class EndCamera : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        transform.eulerAngles -= rotation * rotational_speed;
-        transform.position += velocity;
+        if(transform.position.x < 0) {
+            transform.position += velocity;
+            if(orthoCamera.orthographicSize < 0.1) {
+                orthoCamera.orthographicSize += 0.005f * Time.deltaTime; 
+            }
+            else {
+                orthoCamera.orthographicSize += 0.01f * Time.deltaTime;
+            }
+        }
+        else if(orthoCamera.orthographicSize < 0.5) {
+            orthoCamera.orthographicSize += 0.02f * Time.deltaTime;
+        }
 
     }
 
