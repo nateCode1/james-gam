@@ -22,13 +22,6 @@ public class ArmsController : MonoBehaviour
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out raycastHit, rayTestLength, target);
         Vector3 hitLocation = raycastHit.point;
-        GameObject hitObject = hitLocation != new Vector3(0,0,0) ? raycastHit.collider.gameObject : null;
-        if (!leftArmAtics.IsUnityNull()){
-            leftArmAtics.hitObject = hitObject;
-        }
-        if (!rightArmAtics.IsUnityNull()) {
-            rightArmAtics.hitObject = hitObject;
-        }
         if (hitLocation == new Vector3(0,0,0)) {
             hitLocation = leftShoulder.position + ray.direction.normalized * rayTestLength;
         }

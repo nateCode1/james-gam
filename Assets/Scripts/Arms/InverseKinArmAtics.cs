@@ -21,7 +21,7 @@ public class InverseKinArmAtics : MonoBehaviour
     protected float armRadius;
 
     protected void Start() {
-        playerControllerTransform = GetComponent<Transform>();
+        playerControllerTransform = transform.parent.parent;
         oldElbowPosition = Vector3.zero;
         oldTargetPoint = Vector3.zero;
     }
@@ -44,7 +44,7 @@ public class InverseKinArmAtics : MonoBehaviour
         // Another vector in the plane is the leftward direction of the camera
         // Then use the cross product to find the other basis
         Vector3 basis1 = (targetPoint - shoulder.position).normalized;
-        Vector3 planeNormal = Vector3.Cross(-playerControllerTransform.right, basis1).normalized;
+        Vector3 planeNormal = Vector3.Cross(-transform.right, basis1).normalized;
         Vector3 basis2 = Vector3.Cross(basis1, planeNormal);
         
         // Calculates the 3d position of the elbow using the 2d position and the vertical elevation

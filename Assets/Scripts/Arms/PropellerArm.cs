@@ -1,30 +1,56 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PropellerArm : InverseKinArmAtics
 {
-    public float propellerForce = 40f;
+    public float sustainedForce = 40f;
+    public float initialForce = 10f;
     public float floatDuration = 5f;
-    public float upwardSpeed = 1f;
+    public float maxRotateSpeed = 600f;
+    public float timeToReachMaxRotateSpeed = 1.8f;
+    public float timeToScale = 0.3f;
     private bool canFloat = false;
     private bool isFloating = false;
 
-    private void Update()
+    private float rotateSpeed = 0;
+    private float scale = 0;
+
+    new private void Update()
     {
-        canFloat = checkGrounded();
+        base.Update();
+        canFloat = CheckGrounded();
+        if (!isFloating) {
+            rotateSpeed -= Time.deltaTime * maxRotateSpeed / timeToReachMaxRotateSpeed;
+            scale -= Time.deltaTime * 1 / timeToScale;
+        }
+
+        scale = Mathf.Clamp(scale, 0, 1);
+        rotateSpeed = Mathf.Clamp(rotateSpeed, 0, maxRotateSpeed);
+
+        hand.localScale = new Vector3(scale, scale, scale);
+        hand.GetChild(0).Rotate(new Vector3(rotateSpeed * Time.deltaTime, 0, 0));
+    }
+
+    public override void Pressed() {
+        if (canFloat)
+        {
+            StartCoroutine(FloatCoroutine());
+            playerBody.AddForce(Vector3.up * initialForce);
+        }
     }
 
     public override void Held()
     {
-        if (canFloat && !isFloating)
-        {
-            StartCoroutine(FloatCoroutine());
-        }
-
         if (isFloating)
         {
-            Vector3 upwardMovement = Vector3.up * upwardSpeed;
-            playerBody.AddForce(upwardMovement * propellerForce);
+            rotateSpeed += Time.deltaTime * maxRotateSpeed / timeToReachMaxRotateSpeed;
+            scale += Time.deltaTime * 1 / timeToScale;
+            
+            targetPoint = shoulder.position + Vector3.up * 100;
+
+            playerBody.AddForce(Vector3.up * sustainedForce * Time.deltaTime);
         }
     }
 
@@ -41,7 +67,7 @@ public class PropellerArm : InverseKinArmAtics
         isFloating = false;
     }
 
-    private bool checkGrounded()
+    private bool CheckGrounded()
     {
         return playerControllerTransform.gameObject.GetComponent<PlayerController>().getGrounded();
     }

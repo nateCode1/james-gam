@@ -8,6 +8,7 @@ public class GrabArm : InverseKinArmAtics
     public float grabForce = 1f;
     public float maxForce = 100f;
     public float maxDistance = 100f;
+    public float drag = 10f;
     public LayerMask grabLayers;
     private Vector3 grabPoint;
     private bool isGrabbed = false;
@@ -24,7 +25,7 @@ public class GrabArm : InverseKinArmAtics
             // Places and rotates the hand
             actualHandPos = elbowPosition + lowerArmLength * (handPosition - lowerArm.position).normalized;
             hand.position = grabPoint; // CHANGED!
-            hand.LookAt(actualHandPos + lowerArm.forward);
+            if (!isGrabbed) hand.LookAt(actualHandPos + lowerArm.forward);
 
             oldElbowPosition = elbowPosition;
             oldTargetPoint = handPosition;
@@ -41,7 +42,7 @@ public class GrabArm : InverseKinArmAtics
         if (isGrabbed){
             float forceAmount = Mathf.Min(grabForce * (grabPoint - actualHandPos).magnitude, maxForce);
             playerBody.AddForce((grabPoint - actualHandPos).normalized * forceAmount * Time.deltaTime);
-            playerBody.drag = 10.0f;
+            playerBody.drag = drag;
         }
     }
     public override void LetGo() {
