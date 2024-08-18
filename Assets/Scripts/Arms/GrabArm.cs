@@ -41,8 +41,6 @@ public class GrabArm : InverseKinArmAtics
         if (!isGrabbed) snatchFactor -= Time.deltaTime * snatchActuation / snatchTime;
         snatchFactor = Mathf.Clamp(snatchFactor, 0, snatchActuation);
 
-        print(snatchFactor);
-
         // GRABBB
         for (int i = 0; i < 3; i++) {
             Transform c = hand.GetChild(i);

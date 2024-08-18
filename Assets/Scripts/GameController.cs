@@ -11,6 +11,6 @@ public class GameController : MonoBehaviour
     {
         ArmsController armsController = player.GetComponent<ArmsController>();
         armsController.SwitchArm(armLeft, true);
-        armsController.SwitchArm(armRight, false);
+        //armsController.SwitchArm(armRight, false);
     }
 }
