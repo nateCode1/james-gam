@@ -1,26 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class GrabArm : InverseKinArmAtics
 {
-    public GameObject grabber;
-    public LayerMask grabbable;
+    public float grabForce = 1f;
+    public float maxForce = 100f;
+    public float maxDistance = 100f;
+    public LayerMask grabLayers;
+    private Vector3 grabPoint;
+    private bool isGrabbed = false;
 
-    new void Start() {
-        base.Start();
-        print("Real Grab STARRRTING");
+    public override void VisualUpdate(Vector3 elbowPosition, Vector3 handPosition, float lowerArmLength) {
+        if (!isGrabbed) {
+            Debug.Log("HERE!");
+            base.VisualUpdate(elbowPosition, handPosition, lowerArmLength);
+        } else {
+            // Places and rotates the arm segments
+            upperArm.LookAt(elbowPosition);
+            lowerArm.position = elbowPosition;
+            lowerArm.LookAt(grabPoint); // CHANGED!
+
+            // Places and rotates the hand
+            actualHandPos = elbowPosition + lowerArmLength * (handPosition - lowerArm.position).normalized;
+            hand.position = grabPoint; // CHANGED!
+            hand.LookAt(actualHandPos + lowerArm.forward);
+
+            oldElbowPosition = elbowPosition;
+            oldTargetPoint = handPosition;
+        }
     }
 
-    new void Update() {
-        base.Update();
-
-        grabber.SetActive(false);
-
-        if (Physics.CheckSphere(grabber.transform.position, grabber.transform.localScale.x * 0.25f, grabbable)) { // TODO: Don't just take xscale
-            grabber.SetActive(true);
+    public override void Pressed() {
+        if (Physics.CheckSphere(actualHandPos, maxDistance, grabLayers)){
+            grabPoint = actualHandPos;
+            isGrabbed = true;
         }
+    }
+    public override void Held() {
+        if (isGrabbed){
+            float forceAmount = Mathf.Min(grabForce * (grabPoint - actualHandPos).magnitude, maxForce);
+            playerBody.AddForce((grabPoint - actualHandPos).normalized * forceAmount);
+            playerBody.drag = 10.0f;
+        }
+    }
+    public override void LetGo() {
+        isGrabbed = false;
+        playerBody.drag = 0f;
     }
 }

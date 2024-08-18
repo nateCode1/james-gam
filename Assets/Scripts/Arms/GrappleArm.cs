@@ -12,7 +12,7 @@ public class GrappleArm : InverseKinArmAtics
     private Vector3 grapplePoint;
     private bool isGrappled = false;
     public override void Pressed() {
-        if (hitObject && (grappleLayers.value & (1 << hitObject.layer)) != 0 && (grapplePoint - playerControllerTransform.position).magnitude < maxDistance){ // bitwise bullshit to check if the layer of the hit gameobject is allowed
+        if (hitObject && (grappleLayers.value & (1 << hitObject.layer)) != 0 && (targetPoint - playerControllerTransform.position).magnitude < maxDistance){ // bitwise bullshit to check if the layer of the hit gameobject is allowed
             grapplePoint = targetPoint;
             isGrappled = true;
         }
