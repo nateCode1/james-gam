@@ -405,7 +405,6 @@ GameObject:
   - component: {fileID: 590291734}
   - component: {fileID: 590291733}
   - component: {fileID: 590291732}
-  - component: {fileID: 590291731}
   - component: {fileID: 590291729}
   m_Layer: 0
   m_Name: red bobber
@@ -426,19 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobber: {fileID: 0}
---- !u!114 &590291731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590291728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  bobber: {fileID: 2081407206}
 --- !u!50 &590291732
 Rigidbody2D:
   serializedVersion: 4
@@ -902,7 +889,6 @@ GameObject:
   - component: {fileID: 1147874566}
   - component: {fileID: 1147874565}
   - component: {fileID: 1147874564}
-  - component: {fileID: 1147874563}
   - component: {fileID: 1147874561}
   m_Layer: 0
   m_Name: green bobber
@@ -923,19 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobber: {fileID: 0}
---- !u!114 &1147874563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147874560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  bobber: {fileID: 2081407206}
 --- !u!50 &1147874564
 Rigidbody2D:
   serializedVersion: 4
@@ -1042,7 +1016,6 @@ GameObject:
   - component: {fileID: 1186432448}
   - component: {fileID: 1186432447}
   - component: {fileID: 1186432446}
-  - component: {fileID: 1186432445}
   - component: {fileID: 1186432443}
   m_Layer: 0
   m_Name: bobber man
@@ -1063,19 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobber: {fileID: 0}
---- !u!114 &1186432445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186432442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  bobber: {fileID: 2081407206}
 --- !u!50 &1186432446
 Rigidbody2D:
   serializedVersion: 4
@@ -2225,7 +2186,6 @@ GameObject:
   - component: {fileID: 1513819581}
   - component: {fileID: 1513819580}
   - component: {fileID: 1513819579}
-  - component: {fileID: 1513819578}
   - component: {fileID: 1513819576}
   m_Layer: 0
   m_Name: blue bobber
@@ -2246,19 +2206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobber: {fileID: 0}
---- !u!114 &1513819578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513819575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  bobber: {fileID: 2081407206}
 --- !u!50 &1513819579
 Rigidbody2D:
   serializedVersion: 4
@@ -2365,7 +2313,6 @@ GameObject:
   - component: {fileID: 1593312994}
   - component: {fileID: 1593312993}
   - component: {fileID: 1593312992}
-  - component: {fileID: 1593312991}
   - component: {fileID: 1593312989}
   m_Layer: 0
   m_Name: cube bobber
@@ -2386,19 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobber: {fileID: 0}
---- !u!114 &1593312991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593312988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  bobber: {fileID: 2081407206}
 --- !u!50 &1593312992
 Rigidbody2D:
   serializedVersion: 4
@@ -2487,7 +2422,7 @@ Transform:
   m_GameObject: {fileID: 1593312988}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2956388, y: -1.7576754, z: 0}
+  m_LocalPosition: {x: -0.2956388, y: -1.7576754, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2790,6 +2725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 0}
 --- !u!1 &1909434729
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,6 +2990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 1641699129}
 --- !u!114 &2081407207
 MonoBehaviour:
   m_ObjectHideFlags: 0

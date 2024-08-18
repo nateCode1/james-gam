@@ -35,12 +35,16 @@ public class Arm : MonoBehaviour
         if(rotational_speed > 0){
             rotational_speed -= rotational_speed/1000;
             if(isCasted) {
-                transform.localEulerAngles = new Vector3(0,0,0);
+                rotational_speed -= rotational_speed/100;
+                if(rotational_speed < 5) {
+                    transform.localEulerAngles = new Vector3(0,0,0);
+                    rotational_speed = 0.0f;
+                }
             }
         }
 
         if(Input.GetMouseButtonUp(0)) {
-            theBobber.BobberReset();
+            theBobber.BobberRelease();
             isCasted = true;
         }
     }
