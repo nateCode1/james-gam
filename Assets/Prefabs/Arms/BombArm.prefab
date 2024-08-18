@@ -526,6 +526,7 @@ MonoBehaviour:
   upperArm: {fileID: 2521605074838451311}
   lowerArm: {fileID: 6738116437839079101}
   hand: {fileID: 1230724261441705123}
+  armItem: {fileID: 9024050191856200126, guid: abda054c49b360048bcbf3dec09f4d63, type: 3}
   actualHandPos: {x: 0, y: 0, z: 0}
   playerBody: {fileID: 0}
   hitObject: {fileID: 0}
