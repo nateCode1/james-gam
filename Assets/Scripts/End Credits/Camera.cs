@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraRobot : MonoBehaviour
+public class Camera : MonoBehaviour
 {
     public float rotational_speed = 0.0f;
     private Rigidbody2D _rigidbody;
     private Transform arm_movement;
+    public Camera orthoCamera;
 
     Vector3 rotation = new Vector3(0,0,1);
     Vector3 velocity = new Vector3(0.0005f,-0.0001f,0);
