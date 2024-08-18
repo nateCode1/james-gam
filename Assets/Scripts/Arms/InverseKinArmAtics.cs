@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class InverseKinArmAtics : MonoBehaviour
     protected Vector3 oldHandPosition;
     private Transform playerControllerTransform;
     private float oldShoulderAngle;
-    public Vector3 actualHandPos;
+    private  Vector3 actualHandPos;
 
     protected float armRadius;
 
@@ -31,22 +32,29 @@ public class InverseKinArmAtics : MonoBehaviour
         armRadius = upperArmLength + lowerArmLength;
         // Gets the distance to the target point (side c in the cosine law)
         Vector3 newHandPosition = targetPoint - shoulder.position; // ROUNDING ERROR?
+
         float targetDistance = newHandPosition.magnitude;
         if (newHandPosition.magnitude > armRadius){
             newHandPosition = newHandPosition.normalized * armRadius;
             targetDistance = armRadius - 0.01f; // I HATE YOU!!!!!!!!!!!!
         }
+
+        // TODO: delete all references to playerControllerTransform.forward or .right or whatever
         // Calculates the shoulder angle in radians (gamma in the cosine law)
         float shoulderAngle = Mathf.Acos((Mathf.Pow(upperArmLength, 2) + Mathf.Pow(targetDistance, 2) - Mathf.Pow(lowerArmLength, 2)) / (2 * upperArmLength * targetDistance));
-        shoulderAngle += Vector3.Angle(playerControllerTransform.forward, newHandPosition) * Mathf.Deg2Rad;
 
+        // Shoulder Angle is only NaN when the target point is out of range or the angles happen to line up just wrong
         if (float.IsNaN(shoulderAngle)) {
             shoulderAngle = oldShoulderAngle;
         }
         oldShoulderAngle = shoulderAngle;
 
-        // Uses basic trig to calculate the elbow's position
-        Vector3 newElbowPosition = Mathf.Sin(shoulderAngle) * upperArmLength * -playerControllerTransform.right + Mathf.Cos(shoulderAngle) * upperArmLength * playerControllerTransform.forward;
+        // Uses COMPLICATED trig to calculate the elbow's position
+        Vector3 thisForward = newHandPosition.normalized;
+        Vector3 planeNormal = Vector3.Cross(shoulder.position - playerControllerTransform.position, thisForward);
+        Vector3 thisLeft = Vector3.Cross(thisForward, planeNormal);
+        Debug.Log("this one " + (shoulder.position - playerControllerTransform.position).ToString());
+        Vector3 newElbowPosition = Mathf.Sin(shoulderAngle) * upperArmLength * thisLeft + Mathf.Cos(shoulderAngle) * upperArmLength * thisForward;
 
         // Updates the arms to match the math
         // Also smooths the movement of the visual arms
@@ -65,13 +73,13 @@ public class InverseKinArmAtics : MonoBehaviour
         oldHandPosition = handPosition;
     }
 
-    public virtual void Pressed() {
+    virtual public void Pressed() {
         Debug.Log("THIS DEFAULT ARM WAS CLICKED!!!!!!!!!");
     }
-    public virtual void Held() {
+    virtual public void Held() {
         Debug.Log("THIS DEFAULT ARM WAS HELD DOWN!!!!!!!!!");
     }
-    public virtual void LetGo() {
+    virtual public void LetGo() {
         Debug.Log("THIS DEFAULT ARM WAS LET GO!!!!!!!!!");
     }
 

@@ -152,8 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1757613035}
-  defaultArm: {fileID: 9024050191856200126, guid: b189d385c25c31840a89d1e4d1521d91,
-    type: 3}
+  arm: {fileID: 9024050191856200126, guid: 90b3fa7bca959de4c8c75122380baea3, type: 3}
 --- !u!4 &290150701
 Transform:
   m_ObjectHideFlags: 0
