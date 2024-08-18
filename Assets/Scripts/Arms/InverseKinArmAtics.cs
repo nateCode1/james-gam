@@ -8,15 +8,14 @@ public class InverseKinArmAtics : MonoBehaviour
 {
     public float smoothing = 0.0f;
     public Vector3 targetPoint;
+    protected Vector3 oldTargetPoint;
     public Transform shoulder;
     public Transform upperArm;
     public Transform lowerArm;
     public Transform hand;
     private Vector3 oldElbowPosition;
-    protected Vector3 oldHandPosition;
     private Transform playerControllerTransform;
-    private float oldShoulderAngle;
-    private  Vector3 actualHandPos;
+    public  Vector3 actualHandPos;
 
     protected float armRadius;
 
@@ -29,48 +28,45 @@ public class InverseKinArmAtics : MonoBehaviour
         float upperArmLength = upperArm.GetChild(0).localScale.y * 2;
         // Gets the lower arm length (side b in the cosine law)
         float lowerArmLength = lowerArm.GetChild(0).localScale.y * 2;
-        armRadius = upperArmLength + lowerArmLength;
-        // Gets the distance to the target point (side c in the cosine law)
-        Vector3 newHandPosition = targetPoint - shoulder.position; // ROUNDING ERROR?
+        // Gets the total distance from the shoulder to the point (side c in the cosine law)
+        float distanceToTarget = (targetPoint - shoulder.position).magnitude;
+        // Calculates the angle the shoulder makes relative to side c using the law of cosines
+        float shoulderAngle = Mathf.Acos((upperArmLength * upperArmLength - lowerArmLength * lowerArmLength + distanceToTarget * distanceToTarget) / 2 * upperArmLength * distanceToTarget);
 
-        float targetDistance = newHandPosition.magnitude;
-        if (newHandPosition.magnitude > armRadius){
-            newHandPosition = newHandPosition.normalized * armRadius;
-            targetDistance = armRadius - 0.01f; // I HATE YOU!!!!!!!!!!!!
-        }
+        Debug.Log(shoulderAngle);
 
-        // TODO: delete all references to playerControllerTransform.forward or .right or whatever
-        // Calculates the shoulder angle in radians (gamma in the cosine law)
-        float shoulderAngle = Mathf.Acos((Mathf.Pow(upperArmLength, 2) + Mathf.Pow(targetDistance, 2) - Mathf.Pow(lowerArmLength, 2)) / (2 * upperArmLength * targetDistance));
+        // Gets the position of the elbow in the 2d plane given by the shoulder, the target point, and camera left.
+        Vector2 elbowPos2d = new Vector2(upperArmLength * Mathf.Sin(shoulderAngle), upperArmLength * Mathf.Cos(shoulderAngle));
 
-        // Shoulder Angle is only NaN when the target point is out of range or the angles happen to line up just wrong
-        if (float.IsNaN(shoulderAngle)) {
-            shoulderAngle = oldShoulderAngle;
-        }
-        oldShoulderAngle = shoulderAngle;
-
-        // Uses COMPLICATED trig to calculate the elbow's position
-        Vector3 thisForward = newHandPosition.normalized;
-        Vector3 planeNormal = Vector3.Cross(shoulder.position - playerControllerTransform.position, thisForward);
-        Vector3 thisLeft = Vector3.Cross(thisForward, planeNormal);
-        Debug.Log("this one " + (shoulder.position - playerControllerTransform.position).ToString());
-        Vector3 newElbowPosition = Mathf.Sin(shoulderAngle) * upperArmLength * thisLeft + Mathf.Cos(shoulderAngle) * upperArmLength * thisForward;
+        // Gets the position of the elbow in 3d
+        // First, get the basis vectors of the plane
+        // Define one basis as the direction from the shoulder to the target point
+        // Another vector in the plane is the leftward direction of the camera
+        // Then use the cross product to find the other basis
+        Vector3 basis1 = shoulder.position - playerControllerTransform.position;
+        Vector3 planeNormal = Vector3.Cross(-playerControllerTransform.right, basis1);
+        Vector3 basis2 = Vector3.Cross(basis1, planeNormal);
+        
+        // Calculates the 3d position of the elbow using the 2d position and the vertical elevation
+        Vector3 newElbowPosition = basis1 * elbowPos2d.x + basis2 * elbowPos2d.y;
 
         // Updates the arms to match the math
         // Also smooths the movement of the visual arms
         Vector3 elbowPosition = Vector3.Lerp(shoulder.position + newElbowPosition, oldElbowPosition, smoothing);
-        Vector3 handPosition = Vector3.Lerp(shoulder.position + newHandPosition, oldHandPosition, smoothing);
-        
-        actualHandPos = elbowPosition + lowerArmLength * lowerArm.forward;
+        Vector3 handPosition = Vector3.Lerp(targetPoint, oldTargetPoint, smoothing);
 
+        // Places and rotates the arm segments
         upperArm.LookAt(elbowPosition);
         lowerArm.position = elbowPosition;
         lowerArm.LookAt(handPosition);
+
+        // Places and rotates the hand
+        actualHandPos = elbowPosition + lowerArmLength * lowerArm.forward;
         hand.position = actualHandPos;
         hand.LookAt(actualHandPos + lowerArm.forward);
 
         oldElbowPosition = elbowPosition;
-        oldHandPosition = handPosition;
+        oldTargetPoint = handPosition;
     }
 
     virtual public void Pressed() {
