@@ -21,6 +21,8 @@ public class InverseKinArmAtics : MonoBehaviour
 
     protected void Start() {
         playerControllerTransform = GetComponent<Transform>();
+        oldElbowPosition = Vector3.zero;
+        oldTargetPoint = Vector3.zero;
     }
 
     protected void Update() {
@@ -29,22 +31,19 @@ public class InverseKinArmAtics : MonoBehaviour
         // Gets the lower arm length (side b in the cosine law)
         float lowerArmLength = lowerArm.GetChild(0).localScale.y * 2;
         // Gets the total distance from the shoulder to the point (side c in the cosine law)
-        float distanceToTarget = (targetPoint - shoulder.position).magnitude;
+        float distanceToTarget = Mathf.Min((targetPoint - shoulder.position).magnitude, upperArmLength + lowerArmLength);
         // Calculates the angle the shoulder makes relative to side c using the law of cosines
-        float shoulderAngle = Mathf.Acos((upperArmLength * upperArmLength - lowerArmLength * lowerArmLength + distanceToTarget * distanceToTarget) / 2 * upperArmLength * distanceToTarget);
-
-        Debug.Log(shoulderAngle);
+        float shoulderAngle = (Mathf.PI / 2.0f) - Mathf.Acos((upperArmLength * upperArmLength - lowerArmLength * lowerArmLength + distanceToTarget * distanceToTarget) / (2 * upperArmLength * distanceToTarget));
 
         // Gets the position of the elbow in the 2d plane given by the shoulder, the target point, and camera left.
         Vector2 elbowPos2d = new Vector2(upperArmLength * Mathf.Sin(shoulderAngle), upperArmLength * Mathf.Cos(shoulderAngle));
-
         // Gets the position of the elbow in 3d
         // First, get the basis vectors of the plane
         // Define one basis as the direction from the shoulder to the target point
         // Another vector in the plane is the leftward direction of the camera
         // Then use the cross product to find the other basis
-        Vector3 basis1 = shoulder.position - playerControllerTransform.position;
-        Vector3 planeNormal = Vector3.Cross(-playerControllerTransform.right, basis1);
+        Vector3 basis1 = (targetPoint - shoulder.position).normalized;
+        Vector3 planeNormal = Vector3.Cross(-playerControllerTransform.right, basis1).normalized;
         Vector3 basis2 = Vector3.Cross(basis1, planeNormal);
         
         // Calculates the 3d position of the elbow using the 2d position and the vertical elevation
