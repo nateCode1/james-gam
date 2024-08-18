@@ -39,21 +39,40 @@ public class ArmsController : MonoBehaviour
     }
 
     void Update() {
-        DetectActions();
+        if (hitObject && hitObject.layer == 7) { // 7 corresponds to arm items. if you hover over an arm, the logic should switch to pickup logic
+            DetectArmSwitch();
+        } else {
+            DetectActions();
+        }
     }
 
-    public void SwitchArm(GameObject newArm, bool isLeftArm) {
+    public GameObject SwitchArm(GameObject newArm, bool isLeftArm) {
         if (isLeftArm) {
+            GameObject oldArm = leftArm;
             Destroy(leftArm);
             leftArm = Instantiate(newArm, leftShoulder.position, Quaternion.identity, leftShoulder);
             leftArmAtics = leftArm.GetComponent<InverseKinArmAtics>();
             leftArmAtics.playerBody = transform.parent.GetChild(0).GetComponent<Rigidbody>();
-
+            Debug.Log(oldArm);
+            return oldArm;
         } else {
+            GameObject oldArm = rightArm;
             Destroy(rightArm);
             rightArm = Instantiate(newArm, rightShoulder.position, Quaternion.Euler(new Vector3(0, 180, 0)), rightShoulder);
             rightArmAtics = rightArm.GetComponent<InverseKinArmAtics>();
             rightArmAtics.playerBody = transform.parent.GetChild(0).GetComponent<Rigidbody>();
+            return oldArm;
+        }
+    }
+
+    void DetectArmSwitch() {
+        ArmItem armItem = hitObject.GetComponent<ArmItem>();
+        if (Input.GetMouseButtonDown(0)){
+            GameObject oldArm = SwitchArm(armItem.armPrefab, true);
+            Instantiate(oldArm.GetComponent<InverseKinArmAtics>().armItem, leftShoulder.position - new Vector3(0, -1.5f, 0), Quaternion.identity);
+        } else if(Input.GetMouseButton(1)) {
+            GameObject oldArm = SwitchArm(armItem.armPrefab, false);
+            Instantiate(oldArm.GetComponent<InverseKinArmAtics>().armItem, rightShoulder.position - new Vector3(0, -1.5f, 0), Quaternion.identity);
         }
     }
 
