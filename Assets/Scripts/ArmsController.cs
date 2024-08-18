@@ -16,21 +16,25 @@ public class ArmsController : MonoBehaviour
     public Transform debugSphere;
     public LayerMask target;
     public int rayTestLength = 100;
+    private GameObject hitObject;
 
     void FixedUpdate() {
         RaycastHit raycastHit;
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out raycastHit, rayTestLength, target);
         Vector3 hitLocation = raycastHit.point;
+        hitObject = hitLocation != new Vector3(0,0,0) ? raycastHit.collider.transform.gameObject : null;
         if (hitLocation == new Vector3(0,0,0)) {
             hitLocation = leftShoulder.position + ray.direction.normalized * rayTestLength;
         }
         debugSphere.position = hitLocation;
         if (!leftArm.IsUnityNull()){
             leftArmAtics.targetPoint = hitLocation;
+            leftArmAtics.hitObject = hitObject;
         }
         if (!rightArm.IsUnityNull()){
             rightArmAtics.targetPoint = hitLocation;
+            rightArmAtics.hitObject = hitObject;
         }
     }
 

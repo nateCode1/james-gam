@@ -612,7 +612,7 @@ MonoBehaviour:
   hitObject: {fileID: 0}
   grappleForce: 30
   maxForce: 65
-  maxDistance: 100
+  maxDistance: 10000
   grappleLayers:
     serializedVersion: 2
     m_Bits: 256
