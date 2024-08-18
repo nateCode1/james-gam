@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
 
 public class FishingArm : InverseKinArmAtics
@@ -8,13 +9,14 @@ public class FishingArm : InverseKinArmAtics
     public GameObject HMSBoat;
     public LayerMask groundLayers;
     public Transform player;
-    public float verticalOffset = -1.0f; // Customize this value as needed
+    public float verticalOffset = -1.0f;
+    public string sceneNameToLoad;
 
     public override void LetGo() 
     {
         if (IsAboveHMSBoat()) 
         {
-            Debug.Log("Standing above HMSBoat!");
+            LoadSceneAdditively();
         }
     }
 
@@ -26,5 +28,10 @@ public class FishingArm : InverseKinArmAtics
         Vector3 boatPositionWithOffset = HMSBoat.transform.position + new Vector3(0, verticalOffset, 0);
 
         return Physics.CheckBox(boatPositionWithOffset, boxSize, Quaternion.identity, groundLayers);
+    }
+
+    private void LoadSceneAdditively()
+    {
+        SceneManager.LoadScene(sceneNameToLoad, LoadSceneMode.Additive);
     }
 }
