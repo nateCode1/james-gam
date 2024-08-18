@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 689703270}
   - component: {fileID: 689703268}
   - component: {fileID: 689703271}
-  - component: {fileID: 689703272}
   - component: {fileID: 689703273}
+  - component: {fileID: 689703274}
   m_Layer: 0
   m_Name: arm-cube (1)
   m_TagString: Untagged
@@ -167,7 +167,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689703265}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -185,7 +185,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 3
+  m_Constraints: 0
 --- !u!33 &689703270
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -206,32 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobberJoint: {fileID: 689703272}
---- !u!233 &689703272
-HingeJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689703265}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 1641699134}
-  m_BreakForce: 1000
-  m_BreakTorque: Infinity
-  m_BreakAction: 3
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.46999997, y: -0.15399997}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
 --- !u!114 &689703273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +220,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotational_accel: 0.1
   rotational_speed: 0
+--- !u!233 &689703274
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689703265}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 1641699134}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0.46999997, y: -0.15399997}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1 &1385975434
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7cb9d46498c994da13ddc878db82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobberJoint: {fileID: 0}
 --- !u!1 &1909434729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,7 +1028,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
