@@ -22,6 +22,8 @@ public class Bobber : MonoBehaviour
 
     public void bobberReset(){
         transform.localEulerAngles = new Vector3(0,0,0);
+        transform.parent = arm-cube;
+        _rigidbody.constraints &= (RigidbodyConstraints2D.FreezePositionX & RigidbodyConstraints2D.FreezePositionY);
     }
 
     public void BobberRelease() {
