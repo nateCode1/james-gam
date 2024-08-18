@@ -8,14 +8,6 @@ public class Explode : MonoBehaviour
     public float power = 10.0F;
     public float multiplier = 20.0F;
     public GameObject myParticleSystem;
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ExplodeBomb();
-        }
-    }
     public void ExplodeBomb()
     {
         Vector3 explosionPos = transform.position;
@@ -32,7 +24,7 @@ public class Explode : MonoBehaviour
                 float falloff = Mathf.Pow(normalizedDistance, 3);
                 float adjustedPower = power * multiplier * (1 - falloff);
                 rb.AddExplosionForce(adjustedPower, explosionPos, radius, 0.0F);
-                Debug.Log("Force Applied: " + adjustedPower + " to " + hit.name + " at distance: " + distance);
+                //Debug.Log("Force Applied: " + adjustedPower + " to " + hit.name + " at distance: " + distance);
             }
         }
     }
