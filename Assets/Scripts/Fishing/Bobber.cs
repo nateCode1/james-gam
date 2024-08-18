@@ -20,6 +20,10 @@ public class Bobber : MonoBehaviour
     {
     }
 
+    public void bobberReset(){
+        transform.localEulerAngles = new Vector3(0,0,0);
+    }
+
     public void BobberRelease() {
         Destroy(hinge);
         velocity = spin.rotational_speed;
