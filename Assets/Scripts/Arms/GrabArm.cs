@@ -40,7 +40,7 @@ public class GrabArm : InverseKinArmAtics
     public override void Held() {
         if (isGrabbed){
             float forceAmount = Mathf.Min(grabForce * (grabPoint - actualHandPos).magnitude, maxForce);
-            playerBody.AddForce((grabPoint - actualHandPos).normalized * forceAmount);
+            playerBody.AddForce((grabPoint - actualHandPos).normalized * forceAmount * Time.deltaTime);
             playerBody.drag = 10.0f;
         }
     }
