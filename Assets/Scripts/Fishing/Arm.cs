@@ -26,7 +26,7 @@ public class Arm : MonoBehaviour
             rotational_speed = rotational_speed + rotational_accel;
         }
         transform.Rotate(Vector3.forward, -rotational_speed);
-        if (rotational_speed > 50) {
+        if (rotational_speed > 60) {
             if(Input.GetMouseButtonUp(0)) {
                 _rigidbody.constraints &= (~RigidbodyConstraints2D.FreezePositionX & ~RigidbodyConstraints2D.FreezePositionY);
                 _rigidbody.velocity = new Vector3(10,10,0);
@@ -39,9 +39,8 @@ public class Arm : MonoBehaviour
             }
         }
 
-
         if(Input.GetMouseButtonUp(0)) {
-            theBobber.BobberRelease();
+            theBobber.BobberReset();
             isCasted = true;
         }
     }

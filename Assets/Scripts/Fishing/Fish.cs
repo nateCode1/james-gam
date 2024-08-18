@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
-    private float newY = 0f;
 
+    private bool shouldMove = false;
 
-    public void fishAscent(Bobber bobber) {
-        while(transform.position.y < -0.15) {
-            newY = transform.position.y +0.001f;
-            transform.position = new Vector2 (transform.position.x, newY);
+    public Bobber bobber;
+
+    public void fishAscent() {
+        shouldMove = true;
+    }
+
+    private void FixedUpdate(){
+        if(shouldMove && (transform.position.y < -0.267)) {
+            transform.Translate(Vector3.up * Time.deltaTime);
         }
-        bobber.bobberReset();
+        // if((transform.position.y = -0.267) && shouldMove) {
+        //     shouldMove = false;
+        // }
     }
 }

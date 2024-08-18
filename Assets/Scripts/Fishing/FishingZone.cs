@@ -12,7 +12,7 @@ public class FishingZone : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         Bobber bobber = collision.gameObject.GetComponent<Bobber>();
         if (bobber != null) {
-            fish.fishAscent(bobber);
+            fish.fishAscent();
         }
     }
 }

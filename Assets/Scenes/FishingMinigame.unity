@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 575858381}
   - component: {fileID: 575858380}
   - component: {fileID: 575858384}
+  - component: {fileID: 575858385}
   m_Layer: 0
   m_Name: Human Collider
   m_TagString: Untagged
@@ -348,6 +349,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish: {fileID: 1186432443}
+--- !u!61 &575858385
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575858379}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &590291728
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobber: {fileID: 0}
 --- !u!114 &590291731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +547,7 @@ GameObject:
   - component: {fileID: 778787845}
   - component: {fileID: 778787844}
   - component: {fileID: 778787848}
+  - component: {fileID: 778787849}
   m_Layer: 0
   m_Name: Green Fish Collider
   m_TagString: Untagged
@@ -630,6 +678,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish: {fileID: 1147874561}
+--- !u!61 &778787849
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778787843}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &949140079
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobber: {fileID: 0}
 --- !u!114 &1147874563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,6 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobber: {fileID: 0}
 --- !u!114 &1186432445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,6 +1268,7 @@ GameObject:
   - component: {fileID: 1382420466}
   - component: {fileID: 1382420465}
   - component: {fileID: 1382420464}
+  - component: {fileID: 1382420469}
   m_Layer: 0
   m_Name: Failure Collider
   m_TagString: Untagged
@@ -1303,6 +1399,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1382420469
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382420463}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1385975434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,6 +1542,7 @@ GameObject:
   - component: {fileID: 1387458010}
   - component: {fileID: 1387458009}
   - component: {fileID: 1387458013}
+  - component: {fileID: 1387458014}
   m_Layer: 0
   m_Name: Red Fish Collider
   m_TagString: Untagged
@@ -1531,6 +1673,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish: {fileID: 590291729}
+--- !u!61 &1387458014
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387458008}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1462401204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1849,7 @@ GameObject:
   - component: {fileID: 1467115711}
   - component: {fileID: 1467115710}
   - component: {fileID: 1467115714}
+  - component: {fileID: 1467115715}
   m_Layer: 0
   m_Name: Blue Fish Collider
   m_TagString: Untagged
@@ -1792,6 +1980,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish: {fileID: 1513819576}
+--- !u!61 &1467115715
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467115709}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1469854601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2013,6 +2246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobber: {fileID: 0}
 --- !u!114 &1513819578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,6 +2386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ef8923be5cc9459cb794918fbe767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobber: {fileID: 0}
 --- !u!114 &1593312991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2344,6 +2579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotational_accel: 0.1
   rotational_speed: 0
+  isCasted: 0
   theBobber: {fileID: 2081407206}
 --- !u!1 &1743063149
 GameObject:
@@ -2675,7 +2911,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.5456
+  orthographic size: 0.5456
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2704,6 +2940,7 @@ GameObject:
   - component: {fileID: 2081407203}
   - component: {fileID: 2081407206}
   - component: {fileID: 2081407207}
+  - component: {fileID: 2081407208}
   m_Layer: 0
   m_Name: bobber
   m_TagString: Untagged
@@ -2799,7 +3036,7 @@ Transform:
   m_GameObject: {fileID: 2081407201}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.46, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0.46, y: -0.258, z: 0}
   m_LocalScale: {x: 3.2086775, y: 3.2086778, z: 3.208678}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2831,6 +3068,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotational_accel: 0.1
   rotational_speed: 0
+--- !u!61 &2081407208
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081407201}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.04, y: 0.08}
+    newSize: {x: 0.04, y: 0.08}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.04, y: 0.08}
+  m_EdgeRadius: 0
 --- !u!1 &2119648446
 GameObject:
   m_ObjectHideFlags: 0
