@@ -9,9 +9,16 @@ public class GrabArm : InverseKinArmAtics
     public float maxForce = 100f;
     public float maxDistance = 100f;
     public float drag = 10f;
+    public float snatchTime = 0.3f;
+    public float snatchActuation = 45;
     public LayerMask grabLayers;
     private Vector3 grabPoint;
     private bool isGrabbed = false;
+    [Header ("Beam")]
+    public Transform beamStart;
+    public Transform beamEnd;
+
+    private float snatchFactor = 0;
 
     public override void VisualUpdate(Vector3 elbowPosition, Vector3 handPosition, float lowerArmLength) {
         if (!isGrabbed) {
@@ -30,6 +37,23 @@ public class GrabArm : InverseKinArmAtics
             oldElbowPosition = elbowPosition;
             oldTargetPoint = handPosition;
         }
+
+        if (!isGrabbed) snatchFactor -= Time.deltaTime * snatchActuation / snatchTime;
+        snatchFactor = Mathf.Clamp(snatchFactor, 0, snatchActuation);
+
+        print(snatchFactor);
+
+        // GRABBB
+        for (int i = 0; i < 3; i++) {
+            Transform c = hand.GetChild(i);
+            if (i == 0) c.localEulerAngles = new Vector3(snatchFactor, 0, 0);
+            else if (i == 1) c.localEulerAngles = new Vector3(0, snatchFactor, 0);
+            else if (i == 2) c.localEulerAngles = new Vector3(0, -snatchFactor, 0);
+            else if (i == 3) c.localEulerAngles = new Vector3(-snatchFactor, 0, 0);
+        }
+
+        // Beam
+        GetComponent<LineRenderer>().SetPositions(new Vector3[2] {beamStart.position, beamEnd.position});
     }
 
     public override void Pressed() {
@@ -40,6 +64,7 @@ public class GrabArm : InverseKinArmAtics
     }
     public override void Held() {
         if (isGrabbed){
+            snatchFactor += Time.deltaTime * snatchActuation / snatchTime;
             float forceAmount = Mathf.Min(grabForce * (grabPoint - actualHandPos).magnitude, maxForce);
             playerBody.AddForce((grabPoint - actualHandPos).normalized * forceAmount * Time.deltaTime);
             playerBody.drag = drag;
