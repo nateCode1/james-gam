@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         player.position = wheel.position;
     }
 
-    bool getGrounded() {
+    public bool getGrounded() {
         return Physics.CheckBox(player.position + new Vector3(0, -0.5f, 0), new Vector3(0.4f, 0.2f, 0.4f), Quaternion.identity, groundLayers);
     }
 }

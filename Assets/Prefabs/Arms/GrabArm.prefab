@@ -560,9 +560,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 842417096868699871}
-  - component: {fileID: 3129329723159705544}
+  - component: {fileID: 8834167585742902776}
   m_Layer: 0
-  m_Name: GrappleArm
+  m_Name: GrabArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -589,7 +589,7 @@ Transform:
   - {fileID: 881058614897414676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3129329723159705544
+--- !u!114 &8834167585742902776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -598,10 +598,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9024050191856200126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f103f985118377449a340d42414ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 47bbc8c1cc5275a4cb23b6938607a9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 0.5
+  smoothing: 0
   targetPoint: {x: 0, y: 0, z: 0}
   shoulder: {fileID: 7198596875407431334}
   upperArm: {fileID: 2521605074838451311}
@@ -610,8 +610,9 @@ MonoBehaviour:
   actualHandPos: {x: 0, y: 0, z: 0}
   playerBody: {fileID: 0}
   hitObject: {fileID: 0}
-  grappleForce: 30
-  maxForce: 65
-  grappleLayers:
+  grabForce: 100
+  maxForce: 1000
+  maxDistance: 0.5
+  grabLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
