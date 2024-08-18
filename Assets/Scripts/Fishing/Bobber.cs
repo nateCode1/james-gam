@@ -25,7 +25,7 @@ public class Bobber : MonoBehaviour
         velocity = spin.rotational_speed;
         transform.parent = null;
         _rigidbody.constraints &= (~RigidbodyConstraints2D.FreezePositionX & ~RigidbodyConstraints2D.FreezePositionY);
-        _rigidbody.velocity = new Vector3(velocity/Mathf.Sqrt(2),velocity/Mathf.Sqrt(2),0);
+        _rigidbody.velocity = new Vector3(velocity/(3*Mathf.Sqrt(2)),velocity/(3*Mathf.Sqrt(2)),0);
     }
 
     void FixedUpdate()
