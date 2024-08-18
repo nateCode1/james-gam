@@ -14,9 +14,9 @@ public class InverseKinArmAtics : MonoBehaviour
     public Transform lowerArm;
     public Transform hand;
     private Vector3 oldElbowPosition;
-    private Transform playerControllerTransform;
+    protected Transform playerControllerTransform;
     public  Vector3 actualHandPos;
-
+    public Rigidbody playerBody;
     protected float armRadius;
 
     protected void Start() {
