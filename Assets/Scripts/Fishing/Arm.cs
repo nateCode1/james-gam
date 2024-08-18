@@ -36,10 +36,11 @@ public class Arm : MonoBehaviour
             rotational_speed -= rotational_speed/1000;
         }
 
-        if(Input.GetMouseButtonUp(0)) {
-            while (transform.eulerAngles.z % 360 > 5) {
+        if (transform.eulerAngles.z % 360 > 5 && isCasted) {
                 rotational_speed -= rotational_speed/200;
             }
+
+        if(Input.GetMouseButtonUp(0)) {
             theBobber.BobberRelease();
             isCasted = true;
         }

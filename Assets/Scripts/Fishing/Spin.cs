@@ -20,7 +20,8 @@ public class Spin : MonoBehaviour
 
     private void FixedUpdate() {
         if (Input.GetKey(KeyCode.Mouse0)) {
-            rotational_speed = rotational_speed + rotational_accel;
+            // rotational_speed = rotational_speed + rotational_accel;
+            rotational_speed = 49;
         }
        transform.Rotate(Vector3.forward, -rotational_speed);
         if (rotational_speed > 50) {
