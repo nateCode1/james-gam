@@ -43,7 +43,6 @@ public class PropellerArm : InverseKinArmAtics
 
     private bool checkGrounded()
     {
-        //return playerControllerTransform.GetComponent<PlayerController>().getGrounded();
-        return true;
+        return playerControllerTransform.gameObject.GetComponent<PlayerController>().getGrounded();
     }
 }
