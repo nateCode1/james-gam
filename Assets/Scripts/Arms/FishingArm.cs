@@ -17,6 +17,7 @@ public class FishingArm : InverseKinArmAtics
         if (IsAboveHMSBoat()) 
         {
             LoadSceneAdditively();
+            print("Yay");
         }
     }
 
