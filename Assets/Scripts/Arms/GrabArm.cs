@@ -17,10 +17,14 @@ public class GrabArm : InverseKinArmAtics
     [Header ("Beam")]
     public Transform beamStart;
     public Transform beamEnd;
+    private GameObject attachedObject;
 
     private float snatchFactor = 0;
 
     public override void VisualUpdate(Vector3 elbowPosition, Vector3 handPosition, float lowerArmLength) {
+        if (!attachedObject) {
+            LetGo();
+        }
         if (!isGrabbed) {
             base.VisualUpdate(elbowPosition, handPosition, lowerArmLength);
         } else {
@@ -57,6 +61,7 @@ public class GrabArm : InverseKinArmAtics
     public override void Pressed() {
         if (Physics.CheckSphere(actualHandPos, maxDistance, grabLayers)){
             grabPoint = actualHandPos;
+            attachedObject = hitObject;
             isGrabbed = true;
         }
     }
@@ -71,5 +76,6 @@ public class GrabArm : InverseKinArmAtics
     public override void LetGo() {
         isGrabbed = false;
         playerBody.drag = 0f;
+        attachedObject = null;
     }
 }
