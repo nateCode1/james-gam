@@ -54,6 +54,7 @@ public class ArmsController : MonoBehaviour
             if (leftArm) {
                 oldArmItem = leftArm.GetComponent<InverseKinArmAtics>().armItem;
                 Destroy(leftArm);
+                leftArmAtics.LetGo();
             }
             leftArm = Instantiate(newArm, leftShoulder.position, Quaternion.identity, leftShoulder);
             leftArmAtics = leftArm.GetComponent<InverseKinArmAtics>();
@@ -64,6 +65,7 @@ public class ArmsController : MonoBehaviour
             if (rightArm) {
                 oldArmItem = rightArm.GetComponent<InverseKinArmAtics>().armItem;
                 Destroy(rightArm);
+                rightArmAtics.LetGo();
             }
             rightArm = Instantiate(newArm, rightShoulder.position, Quaternion.Euler(new Vector3(0, 180, 0)), rightShoulder);
             rightArmAtics = rightArm.GetComponent<InverseKinArmAtics>();

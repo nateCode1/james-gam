@@ -13,8 +13,10 @@ public class BombArm : InverseKinArmAtics
         handBomb.SetActive(false);
     }
     public override void LetGo() {
-        handBomb.SetActive(true);
-        bomb.GetComponent<Explode>().ExplodeBomb();
-        Destroy(bomb);
+        if (bomb) {
+            handBomb.SetActive(true);
+            bomb.GetComponent<Explode>().ExplodeBomb();
+            Destroy(bomb);
+        }
     }
 }
