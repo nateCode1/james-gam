@@ -99,22 +99,22 @@ public class ArmsController : MonoBehaviour
     }
 
     void DetectActions() {
-        if (Input.GetMouseButtonDown(0) && leftArm && !leftArmAtics.isActive) {
+        if (Input.GetMouseButtonDown(0) && leftArm && leftArmAtics.isActive) {
             leftArmAtics.Pressed();
         }
-        if (Input.GetMouseButton(0) && leftArm && !leftArmAtics.isActive) {
+        if (Input.GetMouseButton(0) && leftArm && leftArmAtics.isActive) {
             leftArmAtics.Held();
         }
-        if (Input.GetMouseButtonUp(0) && leftArm && !leftArmAtics.isActive) {
+        if (Input.GetMouseButtonUp(0) && leftArm && leftArmAtics.isActive) {
             leftArmAtics.LetGo();
         }
-        if (Input.GetMouseButtonDown(1) && rightArm && !rightArmAtics.isActive) {
+        if (Input.GetMouseButtonDown(1) && rightArm && rightArmAtics.isActive) {
             rightArmAtics.Pressed();
         }
-        if (Input.GetMouseButton(1) && rightArm && !rightArmAtics.isActive) {
+        if (Input.GetMouseButton(1) && rightArm && rightArmAtics.isActive) {
             rightArmAtics.Held();
         }
-        if (Input.GetMouseButtonUp(1) && rightArm && !rightArmAtics.isActive) {
+        if (Input.GetMouseButtonUp(1) && rightArm && rightArmAtics.isActive) {
             rightArmAtics.LetGo();
         }
     }

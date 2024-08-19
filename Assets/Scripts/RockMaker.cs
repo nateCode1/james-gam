@@ -17,6 +17,7 @@ public class RockMaker : MonoBehaviour
     private bool stopped = false;
     private float scaleMultiplier = 1f;
     private Vector3 baseScale;
+    private bool isQuitting = false;
 
     void Start() {
         baseScale = transform.localScale;
@@ -26,7 +27,7 @@ public class RockMaker : MonoBehaviour
     void Update()
     {
         if (!landed && stopped) {
-            Die();
+            Destroy(gameObject);
         }
         
         if (landed && !stopped) {
@@ -53,8 +54,13 @@ public class RockMaker : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
     }
 
-    public void Die() {
-        Instantiate(destroyParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+    void OnApplicationQuit() {
+        isQuitting = true;
+    }
+
+    void OnDestroy() {
+        if(!isQuitting) {
+            Instantiate(destroyParticle, transform.position, Quaternion.identity);
+        }
     }
 }
