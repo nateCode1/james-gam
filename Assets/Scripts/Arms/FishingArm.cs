@@ -1,17 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
 
 public class FishingArm : InverseKinArmAtics
 {
-    public GameObject HMSBoat;
-    public LayerMask groundLayers;
+    private GameObject HMSBoat;
+    public LayerMask playerLayer;
     public float verticalOffset = -1.0f;
     public string sceneNameToLoad;
+    private bool isMinigameActive = false;
 
-    public override void LetGo() 
+    new void Start(){
+        base.Start();
+        HMSBoat = GameObject.Find("HMSBoat");
+    }
+
+    public override void Pressed() 
     {
         if (IsAboveHMSBoat()) 
         {
@@ -22,16 +29,17 @@ public class FishingArm : InverseKinArmAtics
 
     private bool IsAboveHMSBoat() 
     {
-        Vector3 checkPosition = playerBody.position + new Vector3(0, -0.5f, 0);
-        Vector3 boxSize = new Vector3(0.4f, 0.2f, 0.4f);
+        Vector3 boxSize = new Vector3(1f, 1f, 1f);
+        Vector3 placeWherePlayerShouldBe = HMSBoat.transform.position + new Vector3(0, verticalOffset, 0);
 
-        Vector3 boatPositionWithOffset = HMSBoat.transform.position + new Vector3(0, verticalOffset, 0);
-
-        return Physics.CheckBox(boatPositionWithOffset, boxSize, Quaternion.identity, groundLayers);
+        return Physics.CheckBox(placeWherePlayerShouldBe, boxSize, Quaternion.identity, playerLayer);
     }
 
     private void LoadSceneAdditively()
     {
-        SceneManager.LoadScene(sceneNameToLoad, LoadSceneMode.Additive);
+        if (!isMinigameActive){
+            SceneManager.LoadScene(sceneNameToLoad, LoadSceneMode.Additive);
+            isMinigameActive = true;
+        }
     }
 }
