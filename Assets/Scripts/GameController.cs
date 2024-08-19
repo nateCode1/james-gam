@@ -32,8 +32,8 @@ public class GameController : MonoBehaviour
         print(respawnPoint);
 
         ArmsController armsController = player.GetComponent<ArmsController>();
-        armsController.SwitchArm(armLeft, true);
-        armsController.SwitchArm(armRight, false);
+        if (armLeft) armsController.SwitchArm(armLeft, true);
+        if (armRight) armsController.SwitchArm(armRight, false);
     }
 
     void Update() {
@@ -55,9 +55,10 @@ public class GameController : MonoBehaviour
 
     private IEnumerator UndieCoroutine()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2.5f);
         player.transform.GetChild(0).position = respawnPoint; // respawn
-        print("Setting " + player.transform.position);
+        player.transform.GetChild(0).GetComponent<Rigidbody>().velocity = Vector3.zero;
+        player.transform.GetChild(0).GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         yield return new WaitForSeconds(0.2f);
         dying = false;
     }
