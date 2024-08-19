@@ -33,10 +33,10 @@ public class FaceController : MonoBehaviour
 
     void Start()
     {
+        rb = transform.parent.parent.GetComponent<Rigidbody>();
         faceMat.SetTexture(Shader.PropertyToID("_Face"), normal);
         StartCoroutine(BlinkCoroutine());
         StartCoroutine(DizzyCoroutine());
-        rb = transform.parent.parent.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

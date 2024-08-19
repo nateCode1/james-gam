@@ -464,7 +464,7 @@ MonoBehaviour:
   airAccelerationModifier: 0.2
   deathLayers:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 2048
   wheel: {fileID: 1112695676155687744}
   groundLayers:
     serializedVersion: 2
