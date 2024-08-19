@@ -26,8 +26,7 @@ public class RockMaker : MonoBehaviour
     void Update()
     {
         if (!landed && stopped) {
-            Instantiate(destroyParticle, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Die();
         }
         
         if (landed && !stopped) {
@@ -52,5 +51,10 @@ public class RockMaker : MonoBehaviour
     void Stop() {
         stopped = true;
         GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    public void Die() {
+        Instantiate(destroyParticle, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
