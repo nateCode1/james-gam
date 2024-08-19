@@ -11,7 +11,6 @@ public class Arm : MonoBehaviour
     public bool didReset = true;
 
     public Bobber theBobber;
-    private float startRot;
 
     Vector3 rotation = new Vector3(0,0,1);
 
@@ -21,7 +20,6 @@ public class Arm : MonoBehaviour
 
     private void Start()
     {
-        startRot = transform.eulerAngles.z;
     }
 
     private void FixedUpdate() {
@@ -38,10 +36,10 @@ public class Arm : MonoBehaviour
         if(rotational_speed > 0){
             rotational_speed -= rotational_speed/1000;
             if(isCasted) {
-                if(transform.eulerAngles.z % 360 == startRot) {
-                    transform.eulerAngles = new Vector3 (0,0,startRot);
-                    rotational_speed = 0.0f;
-                }
+                rotational_speed -= rotational_speed/200;
+                float angle = transform.rotation.z;
+                angle = Mathf.LerpAngle(0f, angle, Time.deltaTime);
+                transform.eulerAngles = new Vector3(0,angle,0);
             }
         }
 
