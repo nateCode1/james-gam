@@ -22,10 +22,12 @@ public class Lever : MonoBehaviour
     private bool lastFlipped = false;
     private bool activated = false;
     private Outline ol;
+    private Vector3 initRot;
 
     void Start()
     {
-        leverTop.transform.eulerAngles = new Vector3(0, -90, rotateFrom);
+        initRot = leverTop.transform.rotation.eulerAngles;
+        leverTop.transform.eulerAngles = initRot + new Vector3(0, 0, rotateFrom);
         ol = leverBall.GetComponent<Outline>();
         ol.outlineWidth = outlineSize;
     }
@@ -43,12 +45,12 @@ public class Lever : MonoBehaviour
         }
 
         if (flipped && timer < timeToSwitch) {
-            leverTop.transform.eulerAngles = new Vector3(0, -90, rotateFrom + easeOutElastic(timer / timeToSwitch) * (roatateTo - rotateFrom));
+            leverTop.transform.eulerAngles = initRot + new Vector3(0, 0, rotateFrom + easeOutElastic(timer / timeToSwitch) * (roatateTo - rotateFrom));
             
             timer += Time.deltaTime;
         }
         else if (!flipped && timer > 0) {
-            leverTop.transform.eulerAngles = new Vector3(0, -90, roatateTo - easeOutElastic(1 - (timer / timeToSwitch)) * (roatateTo - rotateFrom));
+            leverTop.transform.eulerAngles = initRot + new Vector3(0, 0, roatateTo - easeOutElastic(1 - (timer / timeToSwitch)) * (roatateTo - rotateFrom));
             
             timer -= Time.deltaTime;
         }
