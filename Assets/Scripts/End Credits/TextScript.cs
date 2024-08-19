@@ -24,7 +24,7 @@ public class TextScript : MonoBehaviour
     void Update()
     {
         timeElapsed += Time.deltaTime;
-        if(timeElapsed > 7f){
+        if(timeElapsed > 10f){
             credits.color = Color.Lerp(credits.color, fadeColor, fadeSpeed * Time.deltaTime);
         }
     }
