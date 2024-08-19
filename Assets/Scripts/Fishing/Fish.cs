@@ -20,7 +20,6 @@ public class Fish : MonoBehaviour
         else if(shouldMove) {
             transform.position = new Vector3 ((float)transform.position.x,-0.267f,(float)transform.position.z);
             shouldMove = false;
-            bobber.BobberReset();
          }
     }
 }
