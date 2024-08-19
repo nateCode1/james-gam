@@ -51,7 +51,7 @@ MonoBehaviour:
   rotateFrom: 15
   roatateTo: 165
   timeToSwitch: 2.5
-  outlineSize: 12
+  outlineSize: 0
   onlyRunOnce: 1
   flipped: 0
 --- !u!1001 &4989750288003889013
