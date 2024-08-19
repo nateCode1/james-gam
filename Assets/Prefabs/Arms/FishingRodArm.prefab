@@ -531,12 +531,11 @@ MonoBehaviour:
   actualHandPos: {x: 0, y: 0, z: 0}
   playerBody: {fileID: 0}
   hitObject: {fileID: 0}
-  HMSBoat: {fileID: 0}
-  groundLayers:
+  playerLayer:
     serializedVersion: 2
-    m_Bits: 64
-  verticalOffset: -1
-  sceneNameToLoad: 
+    m_Bits: 128
+  verticalOffset: 1
+  sceneNameToLoad: FishingMinigame
 --- !u!1001 &1342531523459767285
 PrefabInstance:
   m_ObjectHideFlags: 0
