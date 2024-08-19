@@ -28,6 +28,11 @@ public class Fish : MonoBehaviour
          }
         timeElapsed += Time.deltaTime;
         if(timeElapsed > 2f && canKickOut) {
+            PlayerPrefs.SetInt("FishingDone", 1);
+            if (PlayerPrefs.GetInt("ArmFlyOffInternal") == 1) {
+                PlayerPrefs.SetInt("ArmFlyOffInternal", 0);
+                PlayerPrefs.SetInt("ArmFlyOff", 1);
+            }
             SceneManager.UnloadSceneAsync("FishingMinigame");
         }
     }
