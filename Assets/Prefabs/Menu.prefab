@@ -707,6 +707,7 @@ GameObject:
   - component: {fileID: 3422100087630621609}
   - component: {fileID: 3293157998542379715}
   - component: {fileID: 3930176977237425528}
+  - component: {fileID: 5709059620774007392}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -816,6 +817,20 @@ MonoBehaviour:
   cameraControl: {fileID: 0}
   volumeSlider: {fileID: 2988775170733153319}
   sensitivitySlider: {fileID: 8326068600328522849}
+--- !u!114 &5709059620774007392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457690736732685263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2126f14ac234266409f2223db662fbad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathImage: {fileID: 2451549290870981300}
+  collectableText: {fileID: 8431852178467683222}
 --- !u!1 &3488443717803188198
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,7 +1842,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 1173, y: 619}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &64150077827540281
 CanvasRenderer:
@@ -1850,7 +1865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
