@@ -527,7 +527,7 @@ MonoBehaviour:
   upperArm: {fileID: 2521605074838451311}
   lowerArm: {fileID: 6738116437839079101}
   hand: {fileID: 1230724261441705123}
-  armItem: {fileID: 0}
+  armItem: {fileID: 9024050191856200126, guid: f9075fe5a9b805a47a5af16d9eb3d34b, type: 3}
   actualHandPos: {x: 0, y: 0, z: 0}
   playerBody: {fileID: 0}
   hitObject: {fileID: 0}
@@ -535,7 +535,6 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 64
-  player: {fileID: 0}
   verticalOffset: -1
   sceneNameToLoad: 
 --- !u!1001 &1342531523459767285
