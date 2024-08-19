@@ -21,6 +21,7 @@ public class InverseKinArmAtics : MonoBehaviour
     public GameObject hitObject;
     protected float armRadius;
     protected float oldShoulderAngle;
+    public bool isActive = false;
 
 
     protected void Start() {
