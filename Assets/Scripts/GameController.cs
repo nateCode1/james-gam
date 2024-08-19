@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public GameObject armLeft;
     public GameObject armRight;
+    public int totalNumCollectables;
+    public int currentCollectables = 0;
+
     void Start()
     {
         ArmsController armsController = player.GetComponent<ArmsController>();
