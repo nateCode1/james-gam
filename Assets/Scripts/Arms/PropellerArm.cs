@@ -20,10 +20,11 @@ public class PropellerArm : InverseKinArmAtics
     new private void Update()
     {
         base.Update();
-        canFloat = CheckGrounded();
+        if (!canFloat) canFloat = CheckGrounded();
         if (!isFloating) {
             rotateSpeed -= Time.deltaTime * maxRotateSpeed / timeToReachMaxRotateSpeed;
-            scale -= Time.deltaTime * 1 / timeToScale;
+            float targetScale = canFloat ? 0.4f : 0;
+            scale = Mathf.MoveTowards(scale, targetScale, Time.deltaTime * 1 / timeToScale);
         }
 
         scale = Mathf.Clamp(scale, 0, 1);
@@ -36,6 +37,7 @@ public class PropellerArm : InverseKinArmAtics
     public override void Pressed() {
         if (canFloat)
         {
+            canFloat = false;
             StartCoroutine(FloatCoroutine());
             playerBody.AddForce(Vector3.up * initialForce);
         }
@@ -45,6 +47,7 @@ public class PropellerArm : InverseKinArmAtics
     {
         if (isFloating)
         {
+            canFloat = false;
             rotateSpeed += Time.deltaTime * maxRotateSpeed / timeToReachMaxRotateSpeed;
             scale += Time.deltaTime * 1 / timeToScale;
             
@@ -56,6 +59,7 @@ public class PropellerArm : InverseKinArmAtics
 
     public override void LetGo()
     {
+        canFloat = false;
         isFloating = false;
         StopAllCoroutines();
     }

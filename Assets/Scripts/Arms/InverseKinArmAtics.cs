@@ -20,6 +20,7 @@ public class InverseKinArmAtics : MonoBehaviour
     public Rigidbody playerBody;
     public GameObject hitObject;
     protected float armRadius;
+    protected float oldShoulderAngle;
 
 
     protected void Start() {
@@ -37,6 +38,10 @@ public class InverseKinArmAtics : MonoBehaviour
         float distanceToTarget = Mathf.Min((targetPoint - shoulder.position).magnitude, upperArmLength + lowerArmLength);
         // Calculates the angle the shoulder makes relative to side c using the law of cosines
         float shoulderAngle = (Mathf.PI / 2.0f) - Mathf.Acos((upperArmLength * upperArmLength - lowerArmLength * lowerArmLength + distanceToTarget * distanceToTarget) / (2 * upperArmLength * distanceToTarget));
+        if (float.IsNaN(shoulderAngle)) {
+            shoulderAngle = oldShoulderAngle;
+        }
+        oldShoulderAngle = shoulderAngle;
 
         // Gets the position of the elbow in the 2d plane given by the shoulder, the target point, and camera left.
         Vector2 elbowPos2d = new Vector2(upperArmLength * Mathf.Sin(shoulderAngle), upperArmLength * Mathf.Cos(shoulderAngle));
