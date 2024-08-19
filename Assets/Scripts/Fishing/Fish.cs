@@ -8,6 +8,7 @@ public class Fish : MonoBehaviour
 
     private bool shouldMove = false;
     private float timeElapsed = 0.0f;
+    private bool canKickOut = false;
 
     public Bobber bobber;
 
@@ -23,9 +24,10 @@ public class Fish : MonoBehaviour
             transform.position = new Vector3 ((float)transform.position.x,-0.267f,(float)transform.position.z);
             shouldMove = false;
             timeElapsed = 0.0f;
+            canKickOut = true;
          }
         timeElapsed += Time.deltaTime;
-        if(timeElapsed > 5f) {
+        if(timeElapsed > 5f && canKickOut) {
             SceneManager.UnloadSceneAsync("FishingMinigame");
         }
     }
