@@ -21,8 +21,10 @@ public class BombArm : InverseKinArmAtics
     }
 
     public override void Pressed() {
-        bomb = Instantiate(bombTemplate, actualHandPos, Quaternion.identity);
-        handBomb.SetActive(false);
+        if (handBomb.activeSelf) {
+            bomb = Instantiate(bombTemplate, actualHandPos, Quaternion.identity);
+            handBomb.SetActive(false);
+        }
     }
     public override void LetGo() {
         if (bomb) {
