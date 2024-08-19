@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     private GameObject menuRef;
     private bool dying = false;
     private float dyingScreenOpacity = 0;
+    private Rigidbody prb;
 
     void Start()
     {
@@ -29,8 +30,8 @@ public class GameController : MonoBehaviour
         guiInfo.deathImage.color = new Color(1,1,1,0);
 
         //get body
-        respawnPoint = player.transform.GetChild(0).position;
-        print(respawnPoint);
+        prb = player.transform.parent.GetComponentInChildren<Rigidbody>();
+        respawnPoint = prb.position;
 
         ArmsController armsController = player.GetComponent<ArmsController>();
         if (armLeft) armsController.SwitchArm(armLeft, true);
@@ -58,9 +59,9 @@ public class GameController : MonoBehaviour
     private IEnumerator UndieCoroutine()
     {
         yield return new WaitForSeconds(2.5f);
-        player.transform.GetChild(0).position = respawnPoint; // respawn
-        player.transform.GetChild(0).GetComponent<Rigidbody>().velocity = Vector3.zero;
-        player.transform.GetChild(0).GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        prb.position = respawnPoint; // respawn
+        prb.velocity = Vector3.zero;
+        prb.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         yield return new WaitForSeconds(0.2f);
         dying = false;
     }
