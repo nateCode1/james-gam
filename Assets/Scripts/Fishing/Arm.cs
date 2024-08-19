@@ -52,6 +52,7 @@ public class Arm : MonoBehaviour
                 _rigidbody.constraints &= (~RigidbodyConstraints2D.FreezePositionX & ~RigidbodyConstraints2D.FreezePositionY);
                 _rigidbody.velocity = new Vector3(10,10,0);
                 fish.fishAscent();
+                theBobber.GetComponent<BoxCollider2D>().enabled = false;
                 timeElapsed += Time.deltaTime;
                 if(timeElapsed > 2f) {
                     SceneManager.UnloadSceneAsync("FishingMinigame");
