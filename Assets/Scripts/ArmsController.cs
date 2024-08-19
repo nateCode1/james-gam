@@ -8,6 +8,7 @@ public class ArmsController : MonoBehaviour
 {
     public GameObject leftArm;
     public GameObject rightArm;
+    public float armSpacing = 1.0f;
     private InverseKinArmAtics leftArmAtics;
     private InverseKinArmAtics rightArmAtics;
     public Transform leftShoulder;
@@ -29,11 +30,11 @@ public class ArmsController : MonoBehaviour
         }
         debugSphere.position = hitLocation;
         if (!leftArm.IsUnityNull()){
-            leftArmAtics.targetPoint = hitLocation;
+            leftArmAtics.targetPoint = hitLocation + -leftShoulder.right * armSpacing / 2.0f;
             leftArmAtics.hitObject = hitObject;
         }
         if (!rightArm.IsUnityNull()){
-            rightArmAtics.targetPoint = hitLocation;
+            rightArmAtics.targetPoint = hitLocation + rightShoulder.right * armSpacing / 2.0f;
             rightArmAtics.hitObject = hitObject;
         }
     }
