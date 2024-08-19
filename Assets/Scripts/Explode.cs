@@ -23,6 +23,10 @@ public class Explode : MonoBehaviour
                 float adjustedPower = power * multiplier;
                 rb.AddExplosionForce(adjustedPower, explosionPos, radius, 0.0F);
             }
+            CrackedWall crackedWall = hit.gameObject.GetComponent<CrackedWall>();
+            if (crackedWall != null) {
+                crackedWall.Explode();
+            }
         }
     }
 }
