@@ -10,16 +10,25 @@ public class PlayerController : MonoBehaviour
     public float responsiveness = 1;
     public float friction = 0.5f;
     public float airAccelerationModifier = 0.2f;
+    public LayerMask deathLayers;
     private Transform player;
     public Rigidbody wheel;
     public LayerMask groundLayers;
 
+    private SphereCollider sc;
+
     void Start()
     {
         player = GetComponent<Transform>();
+        sc = transform.parent.GetChild(0).GetComponent<SphereCollider>();
     }
 
     void FixedUpdate() {
+        //Check for death
+        if (Physics.CheckSphere(player.transform.position, sc.radius + 0.1f, deathLayers)) {
+            GameObject.Find("GameController").GetComponent<GameController>().Die();
+        }
+
         calculateForce();
         updatePosition();
     }
