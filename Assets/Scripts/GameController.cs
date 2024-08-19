@@ -29,8 +29,7 @@ public class GameController : MonoBehaviour
         guiInfo.deathImage.color = new Color(1,1,1,0);
 
         //get body
-        respawnPoint = player.transform.GetChild(0).position;
-        print(respawnPoint);
+        respawnPoint = player.transform.parent.GetChild(0).position;
 
         ArmsController armsController = player.GetComponent<ArmsController>();
         if (armLeft) armsController.SwitchArm(armLeft, true);
