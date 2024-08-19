@@ -27,7 +27,7 @@ public class Fish : MonoBehaviour
             canKickOut = true;
          }
         timeElapsed += Time.deltaTime;
-        if(timeElapsed > 5f && canKickOut) {
+        if(timeElapsed > 2f && canKickOut) {
             SceneManager.UnloadSceneAsync("FishingMinigame");
         }
     }
