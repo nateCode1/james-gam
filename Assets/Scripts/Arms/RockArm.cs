@@ -41,7 +41,7 @@ public class RockArm : InverseKinArmAtics
         if (handRock.activeSelf){
             // Deletes the old rock
             if (projectile) {
-                projectile.GetComponent<RockMaker>().Die();
+                Destroy(projectile);
             }
             // Adds new projectile
             projectile = Instantiate(projectileTemplate, actualHandPos, Quaternion.identity);
@@ -55,5 +55,8 @@ public class RockArm : InverseKinArmAtics
             handRock.SetActive(false);
             handRockRotationSpeed = Vector3.zero;
         }
+    }
+    void OnDestroy() {
+        Destroy(projectile);
     }
 }
