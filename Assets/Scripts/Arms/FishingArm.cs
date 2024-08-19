@@ -18,6 +18,28 @@ public class FishingArm : InverseKinArmAtics
         HMSBoat = GameObject.Find("HMSBoat");
     }
 
+    new void Update() {
+        base.Update();
+
+        if (PlayerPrefs.GetInt("FishingDone") == 1) {
+            PlayerPrefs.SetInt("FishingDone", 0);
+            isMinigameActive = false;
+        }
+
+        if (PlayerPrefs.GetInt("ArmFlyOff") == 1) {
+            PlayerPrefs.SetInt("ArmFlyOff", 0);
+            ArmsController ac = GameObject.Find("GameController").GetComponent<GameController>().player.GetComponent<ArmsController>();
+            if (ac.leftArm && ac.leftArm.GetComponent<FishingArm>()) ac.leftArm = null;
+            if (ac.rightArm && ac.rightArm.GetComponent<FishingArm>()) ac.rightArm = null;
+            GameObject dropped = Instantiate(armItem, transform.position, Quaternion.Euler(0,0,0));
+            Rigidbody droppedRb = dropped.AddComponent<Rigidbody>();
+            droppedRb.AddForce(new Vector3(0.3f, 1, 1) * 1300);
+            droppedRb.AddTorque(new Vector3(1, 1, 1) * 700);
+            Destroy(dropped, 15f);
+            Destroy(gameObject);
+        }
+    }
+
     public override void Pressed() 
     {
         if (IsAboveHMSBoat()) 
