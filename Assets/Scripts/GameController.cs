@@ -14,18 +14,19 @@ public class GameController : MonoBehaviour
     public int currentCollectables = 0;
 
     private Vector3 respawnPoint;
+    private Gui guiInfo;
     private GameObject menuRef;
     private bool dying = false;
     private float dyingScreenOpacity = 0;
-    private Image deathScreen;
 
     void Start()
     {
         menuRef = Instantiate(menu);
-        menuRef.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = currentCollectables + "/" + totalNumCollectables;
-        deathScreen = menuRef.transform.GetChild(3).GetComponent<Image>();
+        guiInfo = menuRef.GetComponent<Gui>();
 
-        deathScreen.color = new Color(1,1,1,0);
+        guiInfo.collectableText.text = currentCollectables + "/" + totalNumCollectables;
+
+        guiInfo.deathImage.color = new Color(1,1,1,0);
 
         //get body
         respawnPoint = player.transform.GetChild(0).position;
@@ -39,12 +40,13 @@ public class GameController : MonoBehaviour
     void Update() {
         dyingScreenOpacity += Time.deltaTime * (dying ? 2 : -2);
         dyingScreenOpacity = Mathf.Clamp(dyingScreenOpacity, 0, 1);
-        deathScreen.color = new Color(1,1,1,dyingScreenOpacity);
+        guiInfo.deathImage.gameObject.SetActive(dyingScreenOpacity != 0);
+        guiInfo.deathImage.color = new Color(1,1,1,dyingScreenOpacity);
     }
 
     public void Collect() {
         currentCollectables++;
-        menuRef.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = currentCollectables + "/" + totalNumCollectables;
+        guiInfo.collectableText.text = currentCollectables + "/" + totalNumCollectables;
     }
 
     public void Die() {
