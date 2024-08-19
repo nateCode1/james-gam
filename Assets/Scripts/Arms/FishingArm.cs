@@ -8,7 +8,6 @@ public class FishingArm : InverseKinArmAtics
 {
     public GameObject HMSBoat;
     public LayerMask groundLayers;
-    public Transform player;
     public float verticalOffset = -1.0f;
     public string sceneNameToLoad;
 
@@ -23,7 +22,7 @@ public class FishingArm : InverseKinArmAtics
 
     private bool IsAboveHMSBoat() 
     {
-        Vector3 checkPosition = player.position + new Vector3(0, -0.5f, 0);
+        Vector3 checkPosition = playerBody.position + new Vector3(0, -0.5f, 0);
         Vector3 boxSize = new Vector3(0.4f, 0.2f, 0.4f);
 
         Vector3 boatPositionWithOffset = HMSBoat.transform.position + new Vector3(0, verticalOffset, 0);
