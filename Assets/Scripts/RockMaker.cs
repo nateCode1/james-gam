@@ -43,6 +43,7 @@ public class RockMaker : MonoBehaviour
     {
         if (collideMask == (collideMask | (1 << other.gameObject.layer))) {
             landed = true;
+            gameObject.layer = 8;
         }
         else if (playerMask == (playerMask | (1 << other.gameObject.layer))) {
             Stop();
