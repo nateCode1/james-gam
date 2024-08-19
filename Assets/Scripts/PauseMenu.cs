@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class PauseMenu : MonoBehaviour
 {
@@ -38,9 +40,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void ExitGame()
-    {
-        
+    public void ExitGame(string sceneName) {
+        SceneManager.LoadScene(sceneName);
     }
 
     [SerializeField] Slider volumeSlider;
