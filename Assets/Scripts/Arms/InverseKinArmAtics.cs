@@ -21,6 +21,9 @@ public class InverseKinArmAtics : MonoBehaviour
     public GameObject hitObject;
     protected float armRadius;
     protected float oldShoulderAngle;
+    protected float timeSinceCreated;
+    public bool isActive = false;
+    public float inactivityDelay = 0.1f;
 
 
     protected void Start() {
@@ -60,6 +63,12 @@ public class InverseKinArmAtics : MonoBehaviour
         // Updates the arms to match the math
         // Also smooths the movement of the visual arms
         Vector3 elbowPosition = Vector3.Lerp(shoulder.position + newElbowPosition, oldElbowPosition, smoothing);
+        // Keeps track of how long it's been since the arm was created
+        timeSinceCreated += Time.deltaTime;
+        // Makes the arm item only start working after some time has passed
+        if (timeSinceCreated > inactivityDelay && !isActive) {
+            isActive = true;
+        }
         Vector3 handPosition = Vector3.Lerp(targetPoint, oldTargetPoint, smoothing);
         VisualUpdate(elbowPosition, handPosition, lowerArmLength);
     }

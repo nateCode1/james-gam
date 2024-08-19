@@ -15,6 +15,7 @@ public class Arm : MonoBehaviour
 
     public Bobber theBobber;
 
+    private bool canRelease = false;
     Vector3 rotation = new Vector3(0,0,1);
 
     private void Awake() {
@@ -23,6 +24,22 @@ public class Arm : MonoBehaviour
 
     private void Start()
     {
+    }
+
+    void Update() {
+        if(Input.GetMouseButtonDown(0)) canRelease = true;
+        if(Input.GetMouseButtonUp(0) && canRelease) {
+            theBobber.BobberRelease();
+            isCasted = true;
+        }
+        if (rotational_speed > 60) {
+            if(Input.GetMouseButtonUp(0)) {
+                // arm fly off
+                PlayerPrefs.SetInt("ArmFlyOffInternal", 1);
+                _rigidbody.constraints &= (~RigidbodyConstraints2D.FreezePositionX & ~RigidbodyConstraints2D.FreezePositionY);
+                _rigidbody.velocity = new Vector3(10,10,0);
+            }
+        }
     }
 
     private void FixedUpdate() {
@@ -49,11 +66,6 @@ public class Arm : MonoBehaviour
                 angle = Mathf.LerpAngle(0f, angle, Time.deltaTime);
                 transform.eulerAngles = new Vector3(0,angle,0);
             }
-        }
-
-        if(Input.GetMouseButtonUp(0)) {
-            theBobber.BobberRelease();
-            isCasted = true;
         }
     }
 

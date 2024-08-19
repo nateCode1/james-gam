@@ -219,10 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a55e642a245774fa326b324d2ec0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 0}
+  menu: {fileID: 3457690736732685263, guid: 148a81f5ebc4e6341b94e2a33aa92505, type: 3}
   player: {fileID: 550240726}
-  armLeft: {fileID: 9024050191856200126, guid: a0c8ded7ec9b939478fa3a36eb87f48f, type: 3}
-  armRight: {fileID: 9024050191856200126, guid: a0c8ded7ec9b939478fa3a36eb87f48f,
+  armLeft: {fileID: 9024050191856200126, guid: ba565e11b4a39574fbed6aa2b9dcf280, type: 3}
+  armRight: {fileID: 9024050191856200126, guid: baf4724ab5957324a8c61b8ec81940f6,
     type: 3}
   totalNumCollectables: 0
   currentCollectables: 0
