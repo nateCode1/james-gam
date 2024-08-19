@@ -17,6 +17,7 @@ public class ArmsController : MonoBehaviour
     public Transform debugSphere;
     public LayerMask target;
     public int rayTestLength = 100;
+    public float maxPickupDistance = 5.0f;
     private GameObject hitObject;
 
     void FixedUpdate() {
@@ -72,6 +73,9 @@ public class ArmsController : MonoBehaviour
     }
 
     void DetectArmSwitch() {
+        // Max pickup distance
+        if ((transform.position - hitObject.transform.position).magnitude > maxPickupDistance) return;
+
         ArmItem armItem = hitObject.GetComponent<ArmItem>();
         if (Input.GetMouseButtonDown(0)){
             GameObject oldArmItem = SwitchArm(armItem.armPrefab, true);
