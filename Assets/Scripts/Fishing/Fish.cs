@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fish : MonoBehaviour
 {
 
     private bool shouldMove = false;
+    private float timeElapsed = 0.0f;
 
     public Bobber bobber;
 
@@ -20,6 +22,11 @@ public class Fish : MonoBehaviour
         else if(shouldMove) {
             transform.position = new Vector3 ((float)transform.position.x,-0.267f,(float)transform.position.z);
             shouldMove = false;
+            timeElapsed = 0.0f;
          }
+        timeElapsed += Time.deltaTime;
+        if(timeElapsed > 5f) {
+            SceneManager.UnloadSceneAsync("FishingMinigame");
+        }
     }
 }
