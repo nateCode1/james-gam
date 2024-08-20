@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     private bool dying = false;
     private float dyingScreenOpacity = 0;
     private Rigidbody prb;
+    private bool fishCollect = false;
 
     void Start()
     {
@@ -39,10 +40,15 @@ public class GameController : MonoBehaviour
     }
 
     void Update() {
+        if (Input.GetKey(KeyCode.R)) Die(); // Respawn
+
         dyingScreenOpacity += Time.deltaTime * (dying ? 2 : -2);
         dyingScreenOpacity = Mathf.Clamp(dyingScreenOpacity, 0, 1);
         guiInfo.deathImage.gameObject.SetActive(dyingScreenOpacity != 0);
         guiInfo.deathImage.color = new Color(1,1,1,dyingScreenOpacity);
+        if(!fishCollect && PlayerPrefs.GetInt("FishCollect", 0) >= 1) {
+            currentCollectables++;
+        }
     }
 
     public void Collect() {

@@ -9,6 +9,8 @@ public class BombArm : InverseKinArmAtics
     public GameObject handBomb;
     public float reloadTime = 3;
     private float timeSinceLastShot = 0;
+    public AudioSource boomSoundPlayer;
+    public AudioSource fuseSoundPlayer;
     private GameObject bomb; // could be a list of bombs if we want more than one to be alive at a time
 
     public override void VisualUpdate(Vector3 elbowPosition, Vector3 handPosition, float lowerArmLength){
@@ -18,6 +20,13 @@ public class BombArm : InverseKinArmAtics
             handBomb.SetActive(true);
         }
         base.VisualUpdate(elbowPosition, handPosition, lowerArmLength);
+    }
+
+    public override void Held()
+    {
+        if (!fuseSoundPlayer.isPlaying) {
+            fuseSoundPlayer.Play();
+        }
     }
 
     public override void Pressed() {
@@ -31,6 +40,8 @@ public class BombArm : InverseKinArmAtics
             timeSinceLastShot = 0;
             bomb.GetComponent<Explode>().ExplodeBomb();
             Destroy(bomb);
+            fuseSoundPlayer.Stop();
+            boomSoundPlayer.Play();
         }
     }
 }

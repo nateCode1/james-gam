@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using UnityEditor;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     public float sensitivity = 1.0f;
+    public Vector3[] camCheckOffsets;
+    public LayerMask cameraSolidLayers;
     private Transform cameraPivotTransform;
     private float oldX = 0;
     private float oldY = 0;
+    private float camDist;
+    private Vector3 camOffs;
 
     void Start() {
         cameraPivotTransform = GetComponent<Transform>();
+        camDist = (transform.GetChild(0).position - transform.position).magnitude;
+        camOffs = (transform.GetChild(0).position - transform.position).normalized;
     }
     void Update()
     {
@@ -23,8 +31,29 @@ public class CameraController : MonoBehaviour
         }
         cameraPivotTransform.eulerAngles = new Vector3(newX, newY, 0);
 
+        // ### CAMERA CLIPPING FIX START ###
+        // Vector from player to desired camera position
+        Vector3 camDir = Quaternion.Euler(cameraPivotTransform.eulerAngles + new Vector3(15,0,0)) * -Vector3.forward;
+        RaycastHit raycastHit;
+        Physics.Raycast(transform.position, camDir, out raycastHit, camDist, cameraSolidLayers);
+
+        // Additional checks not implemented lmao
+        // foreach (Vector3 offs in camCheckOffsets) {
+        //     print(offs);
+        // }
+
+        Debug.DrawLine(transform.GetChild(0).position, transform.position);
+
+        float currDist = camDist;
+        if (raycastHit.collider) currDist = (raycastHit.point - cameraPivotTransform.position).magnitude * 0.7f;
+        currDist = Mathf.Clamp(currDist, 0.5f, 5000);
+        transform.GetChild(0).position = cameraPivotTransform.position + camDir * currDist;
+        // ### CAMERA CLIPPING FIX END ###
+
         oldX = newX;
         oldY = newY;
+
+        SetSensitivity(PlayerPrefs.GetFloat("Sensitivity") * 8);
     }
 
     public void SetSensitivity (float newSens) {

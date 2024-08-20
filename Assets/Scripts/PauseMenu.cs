@@ -40,8 +40,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void ExitGame(string sceneName) {
-        SceneManager.LoadScene(sceneName);
+    public void ExitGame() {
+        SceneManager.LoadScene (sceneName:"TitleScene");
     }
 
     [SerializeField] Slider volumeSlider;
@@ -56,7 +56,6 @@ public class PauseMenu : MonoBehaviour
         }
         if (PlayerPrefs.HasKey("Sensitivity"))
         {
-            cameraControl.GetComponent<CameraController>().SetSensitivity(PlayerPrefs.GetFloat("Sensitivity"));
             sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
         }
     }
