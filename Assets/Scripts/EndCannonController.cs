@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+
 
 public class EndCannonController : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class EndCannonController : MonoBehaviour
     private bool startLaunch = false;
     private bool launched = false;
 
+    // timer after cannon launches
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +29,18 @@ public class EndCannonController : MonoBehaviour
         initRot = transform.eulerAngles.x;
     }
 
+    IEnumerator startCredits() {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("End Credits");
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (launched) return;
+        if (launched){
+            StartCoroutine(startCredits());
+            return;
+        }
 
         triggered = Physics.CheckSphere(trigger.transform.position, sc.radius, playerLayer);
 

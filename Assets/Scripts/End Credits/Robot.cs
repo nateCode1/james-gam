@@ -23,7 +23,6 @@ public class Robot : MonoBehaviour
     private void Start()
     {
         image.color = new Color(0,0,0,0);
-        Time.timeScale = 10f;
     }
 
     private void Update() {
