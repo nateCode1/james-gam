@@ -726,6 +726,8 @@ MonoBehaviour:
   actualHandPos: {x: 0, y: 0, z: 0}
   playerBody: {fileID: 0}
   hitObject: {fileID: 0}
+  isActive: 0
+  inactivityDelay: 0.1
   grabForce: 1500
   maxForce: 10000
   maxDistance: 0.5
@@ -734,7 +736,7 @@ MonoBehaviour:
   snatchActuation: 45
   grabLayers:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 256
   beamStart: {fileID: 8285277246502336652}
   beamEnd: {fileID: 808027708822969174}
 --- !u!120 &7678706101922348971
