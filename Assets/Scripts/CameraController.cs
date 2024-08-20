@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
     {
         float newX = oldX;
         float newY = oldY;
-        if (Input.GetKey(KeyCode.Mouse2)) {
+        if (Input.GetKey(KeyCode.Mouse2) || Input.GetKey(KeyCode.Space)) {
             newX = oldX - Input.GetAxisRaw("Mouse Y") * sensitivity;
             newX = ClampAngle(newX, -50, 35);
             newY = oldY + Input.GetAxisRaw("Mouse X") * sensitivity;
@@ -46,14 +46,14 @@ public class CameraController : MonoBehaviour
 
         float currDist = camDist;
         if (raycastHit.collider) currDist = (raycastHit.point - cameraPivotTransform.position).magnitude * 0.7f;
-        currDist = Mathf.Clamp(currDist, 0.5f, 5000);
+        currDist = Mathf.Clamp(currDist, 3f, 5000);
         transform.GetChild(0).position = cameraPivotTransform.position + camDir * currDist;
         // ### CAMERA CLIPPING FIX END ###
 
         oldX = newX;
         oldY = newY;
 
-        SetSensitivity(PlayerPrefs.GetFloat("Sensitivity") * 8);
+        SetSensitivity((PlayerPrefs.GetFloat("Sensitivity") + 0.05f) * 8);
     }
 
     public void SetSensitivity (float newSens) {
