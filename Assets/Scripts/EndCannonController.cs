@@ -20,7 +20,7 @@ public class EndCannonController : MonoBehaviour
     private bool startLaunch = false;
     private bool launched = false;
 
-    // timer after cannon launches
+    public StartCredits docredits;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,9 @@ public class EndCannonController : MonoBehaviour
     }
 
     IEnumerator startCredits() {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
+        docredits.cannonTrigger();
+        yield return new WaitForSeconds(12);
         SceneManager.LoadScene("End Credits");
     }
 
