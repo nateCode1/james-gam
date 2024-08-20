@@ -20,6 +20,12 @@ public class GrappleArm : InverseKinArmAtics
         if (hitObject && (grappleLayers.value & (1 << hitObject.layer)) != 0 && (targetPoint - playerControllerTransform.position).magnitude < maxDistance){ // bitwise bullshit to check if the layer of the hit gameobject is allowed
             grapplePoint = targetPoint;
             attachedObject = hitObject;
+            
+            Lever lever = attachedObject.GetComponent<Lever>();
+            if (lever != null) {
+                lever.Flip();
+            }
+            
             isGrappled = true;
         }
     }

@@ -17,6 +17,7 @@ public class Lever : MonoBehaviour
     public bool onlyRunOnce = true;
 
     public bool flipped = false;
+    public int signalNum = 0;
 
     private float timer = 0;
     private bool lastFlipped = false;
