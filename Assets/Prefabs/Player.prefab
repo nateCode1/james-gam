@@ -151,7 +151,7 @@ Transform:
   m_GameObject: {fileID: 2970502096749694342}
   serializedVersion: 2
   m_LocalRotation: {x: 0.10725297, y: -0, z: -0, w: 0.99423176}
-  m_LocalPosition: {x: -0.36768818, y: 4.3199997, z: -9.209227}
+  m_LocalPosition: {x: 0, y: 0, z: -10.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -435,7 +435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9105454408725018738}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -482,6 +482,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 3.31
+  camCheckOffsets: []
+  cameraSolidLayers:
+    serializedVersion: 2
+    m_Bits: 1345
 --- !u!114 &2462239555690777825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +509,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1856
   rayTestLength: 100
+  maxPickupDistance: 5
 --- !u!1001 &3617736879389220203
 PrefabInstance:
   m_ObjectHideFlags: 0
