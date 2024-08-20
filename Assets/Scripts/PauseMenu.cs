@@ -56,7 +56,6 @@ public class PauseMenu : MonoBehaviour
         }
         if (PlayerPrefs.HasKey("Sensitivity"))
         {
-            cameraControl.GetComponent<CameraController>().SetSensitivity(PlayerPrefs.GetFloat("Sensitivity"));
             sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
         }
     }

@@ -52,6 +52,8 @@ public class CameraController : MonoBehaviour
 
         oldX = newX;
         oldY = newY;
+
+        SetSensitivity(PlayerPrefs.GetFloat("Sensitivity") * 8);
     }
 
     public void SetSensitivity (float newSens) {
