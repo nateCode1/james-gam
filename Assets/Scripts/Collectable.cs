@@ -6,6 +6,7 @@ public class Collectable : MonoBehaviour
 {
     public LayerMask playerLayer;
     public GameObject pickupParticle;
+    public GameObject soundPlayer;
     public GameObject gameController;
 
     private BoxCollider bc;
@@ -30,6 +31,7 @@ public class Collectable : MonoBehaviour
         if (Physics.CheckBox(transform.position + bc.center, 0.5f * new Vector3(bc.size.x*transform.localScale.x, bc.size.y*transform.localScale.y, bc.size.z*transform.localScale.z), Quaternion.identity, playerLayer)) {
             Instantiate(pickupParticle, transform.position, Quaternion.identity);
             if (gameController != null) gameController.GetComponent<GameController>().Collect();
+            if (soundPlayer) Destroy(Instantiate(soundPlayer), 1.5f);
             Destroy(gameObject);
         }
     }

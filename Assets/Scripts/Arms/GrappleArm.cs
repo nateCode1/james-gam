@@ -55,7 +55,7 @@ public class GrappleArm : InverseKinArmAtics
             hand.SetPositionAndRotation(grapplePoint, oldHandRotation);
         }
 
-        if ((targetPoint - playerControllerTransform.position).magnitude > maxDistance || isGrappled) {
+        if ((targetPoint - playerControllerTransform.position).magnitude > maxDistance || isGrappled || !(grappleLayers == (grappleLayers | (1 << hitObject.layer)))) {
             indicator.SetActive(false);
         } else {
             indicator.SetActive(true);

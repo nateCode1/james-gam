@@ -120,4 +120,6 @@ MonoBehaviour:
     m_Bits: 128
   pickupParticle: {fileID: 8570145826439491263, guid: a23fb0d6118183a479a89dbb0723c6dc,
     type: 3}
+  soundPlayer: {fileID: 5330114720534337812, guid: 3a86442ada7c6d746ac798bf48fdf886,
+    type: 3}
   gameController: {fileID: 0}
