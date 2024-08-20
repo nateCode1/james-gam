@@ -41,7 +41,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void ExitGame() {
-        SceneManager.LoadScene (sceneName:"TitleScene");
+        SceneManager.LoadScene (sceneName:"TitleScreen");
     }
 
     [SerializeField] Slider volumeSlider;
