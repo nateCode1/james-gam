@@ -13,6 +13,7 @@ public class GrappleArm : InverseKinArmAtics
     private bool isGrappled = false;
     public Transform beamStart;
     public Transform beamEnd; 
+    public GameObject indicator;
     private GameObject attachedObject;
 
     public override void Pressed() {
@@ -40,6 +41,13 @@ public class GrappleArm : InverseKinArmAtics
         base.VisualUpdate(elbowPosition, handPosition, lowerArmLength);
         if (isGrappled){
             hand.SetPositionAndRotation(grapplePoint, oldHandRotation);
+        }
+
+        if ((targetPoint - playerControllerTransform.position).magnitude > maxDistance || isGrappled) {
+            indicator.SetActive(false);
+        } else {
+            indicator.SetActive(true);
+            indicator.transform.position = targetPoint;
         }
 
         // Beam
