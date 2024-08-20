@@ -58,6 +58,7 @@ public class PauseMenu : MonoBehaviour
         {
             sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
         }
+        else PlayerPrefs.SetFloat("Sensitivity", 0.5f);
     }
     public void SetVolume (float volume)
     {
