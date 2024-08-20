@@ -40,6 +40,8 @@ public class GameController : MonoBehaviour
     }
 
     void Update() {
+        if (Input.GetKey(KeyCode.R)) Die(); // Respawn
+
         dyingScreenOpacity += Time.deltaTime * (dying ? 2 : -2);
         dyingScreenOpacity = Mathf.Clamp(dyingScreenOpacity, 0, 1);
         guiInfo.deathImage.gameObject.SetActive(dyingScreenOpacity != 0);

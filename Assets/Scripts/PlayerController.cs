@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
 
     public float acceleration = 0;
+    public AudioSource wind;
+    public AudioSource music;
     public float responsiveness = 1;
     public float friction = 0.5f;
     public float airAccelerationModifier = 0.2f;
@@ -16,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayers;
 
     private SphereCollider sc;
+
 
     void Start()
     {
@@ -31,6 +35,12 @@ public class PlayerController : MonoBehaviour
 
         calculateForce();
         updatePosition();
+
+        wind.volume = Mathf.Clamp(Mathf.Pow(wheel.velocity.magnitude / 35, 2) / 2, 0, 0.25f);
+
+        if (!music.isPlaying) {
+            music.PlayDelayed(UnityEngine.Random.Range(5, 20));
+        }
     }
 
     void calculateForce() {

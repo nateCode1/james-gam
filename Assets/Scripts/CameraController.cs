@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
 
         // ### CAMERA CLIPPING FIX START ###
         // Vector from player to desired camera position
-        Vector3 camDir = Quaternion.Euler(cameraPivotTransform.eulerAngles) * -Vector3.forward;
+        Vector3 camDir = Quaternion.Euler(cameraPivotTransform.eulerAngles + new Vector3(15,0,0)) * -Vector3.forward;
         RaycastHit raycastHit;
         Physics.Raycast(transform.position, camDir, out raycastHit, camDist, cameraSolidLayers);
 
@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
         float currDist = camDist;
         if (raycastHit.collider) currDist = (raycastHit.point - cameraPivotTransform.position).magnitude * 0.7f;
         currDist = Mathf.Clamp(currDist, 0.5f, 5000);
-        transform.GetChild(0).position = cameraPivotTransform.position + camDir * currDist + Vector3.up * 1;
+        transform.GetChild(0).position = cameraPivotTransform.position + camDir * currDist;
         // ### CAMERA CLIPPING FIX END ###
 
         oldX = newX;

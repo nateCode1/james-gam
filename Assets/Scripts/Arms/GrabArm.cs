@@ -70,8 +70,8 @@ public class GrabArm : InverseKinArmAtics
             }
 
             isGrabbed = true;
+            audioPlayer.Play();
         }
-        audioPlayer.Play();
     }
     public override void Held() {
         if (isGrabbed){
@@ -82,9 +82,9 @@ public class GrabArm : InverseKinArmAtics
         }
     }
     public override void LetGo() {
+        if (isGrabbed) audioPlayer.Play();
         isGrabbed = false;
         playerBody.drag = 0f;
         attachedObject = null;
-        audioPlayer.Play();
     }
 }
