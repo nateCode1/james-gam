@@ -31754,9 +31754,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 3457690736732685263, guid: 148a81f5ebc4e6341b94e2a33aa92505, type: 3}
   player: {fileID: 562809245}
-  armLeft: {fileID: 9024050191856200126, guid: ba565e11b4a39574fbed6aa2b9dcf280, type: 3}
-  armRight: {fileID: 9024050191856200126, guid: baf4724ab5957324a8c61b8ec81940f6,
-    type: 3}
+  armLeft: {fileID: 0}
+  armRight: {fileID: 0}
   totalNumCollectables: 0
   currentCollectables: 0
 --- !u!4 &1495179482
