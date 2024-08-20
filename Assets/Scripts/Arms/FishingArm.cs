@@ -16,6 +16,7 @@ public class FishingArm : InverseKinArmAtics
     new void Start(){
         base.Start();
         HMSBoat = GameObject.Find("HMSBoat");
+        PlayerPrefs.SetInt("ArmFlyOff", 0);
     }
 
     new void Update() {

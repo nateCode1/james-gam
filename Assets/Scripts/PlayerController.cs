@@ -69,6 +69,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public bool getGrounded() {
-        return Physics.CheckBox(player.position + new Vector3(0, -0.5f, 0), new Vector3(0.4f, 0.2f, 0.4f), Quaternion.identity, groundLayers);
+        return Physics.CheckBox(player.position + new Vector3(0, -0.5f, 0), new Vector3(0.075f, 0.075f, 0.075f), Quaternion.identity, groundLayers);
     }
 }
