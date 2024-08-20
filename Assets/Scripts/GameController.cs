@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
         guiInfo.deathImage.gameObject.SetActive(dyingScreenOpacity != 0);
         guiInfo.deathImage.color = new Color(1,1,1,dyingScreenOpacity);
         if(!fishCollect && PlayerPrefs.GetInt("FishCollect", 0) >= 1) {
-            collectables += 1;
+            currentCollectables++;
         }
     }
 
