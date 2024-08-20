@@ -11,6 +11,7 @@ public class PropellerArm : InverseKinArmAtics
     public float maxRotateSpeed = 600f;
     public float timeToReachMaxRotateSpeed = 1.8f;
     public float timeToScale = 0.3f;
+    public AudioSource audioPlayer;
     private bool canFloat = false;
     private bool isFloating = false;
 
@@ -52,8 +53,12 @@ public class PropellerArm : InverseKinArmAtics
             scale += Time.deltaTime * 1 / timeToScale;
             
             targetPoint = shoulder.position + Vector3.up * 100;
-
+            if (!audioPlayer.isPlaying) {
+                audioPlayer.Play();
+            }
             playerBody.AddForce(Vector3.up * sustainedForce * Time.deltaTime);
+        } else {
+            audioPlayer.Stop();
         }
     }
 
@@ -62,6 +67,7 @@ public class PropellerArm : InverseKinArmAtics
         canFloat = false;
         isFloating = false;
         StopAllCoroutines();
+        audioPlayer.Stop();
     }
 
     private IEnumerator FloatCoroutine()

@@ -14,6 +14,7 @@ public class GrabArm : InverseKinArmAtics
     public LayerMask grabLayers;
     private Vector3 grabPoint;
     private bool isGrabbed = false;
+    public AudioSource audioPlayer;
     [Header ("Beam")]
     public Transform beamStart;
     public Transform beamEnd;
@@ -22,7 +23,7 @@ public class GrabArm : InverseKinArmAtics
     private float snatchFactor = 0;
 
     public override void VisualUpdate(Vector3 elbowPosition, Vector3 handPosition, float lowerArmLength) {
-        if (!attachedObject) {
+        if (isGrabbed && !attachedObject) {
             LetGo();
         }
         if (!isGrabbed) {
@@ -70,6 +71,7 @@ public class GrabArm : InverseKinArmAtics
 
             isGrabbed = true;
         }
+        audioPlayer.Play();
     }
     public override void Held() {
         if (isGrabbed){
@@ -83,5 +85,6 @@ public class GrabArm : InverseKinArmAtics
         isGrabbed = false;
         playerBody.drag = 0f;
         attachedObject = null;
+        audioPlayer.Play();
     }
 }

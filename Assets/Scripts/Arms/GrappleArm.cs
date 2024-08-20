@@ -15,11 +15,14 @@ public class GrappleArm : InverseKinArmAtics
     public Transform beamEnd; 
     public GameObject indicator;
     private GameObject attachedObject;
+    public AudioSource shootSoundPlayer;
+    public AudioSource wubWubWubSoundPlayer;
 
     public override void Pressed() {
         if (hitObject && (grappleLayers.value & (1 << hitObject.layer)) != 0 && (targetPoint - playerControllerTransform.position).magnitude < maxDistance){ // bitwise bullshit to check if the layer of the hit gameobject is allowed
             grapplePoint = targetPoint;
             attachedObject = hitObject;
+            shootSoundPlayer.Play();
             
             Lever lever = attachedObject.GetComponent<Lever>();
             if (lever != null) {
@@ -35,6 +38,9 @@ public class GrappleArm : InverseKinArmAtics
             playerBody.AddForce((grapplePoint - playerControllerTransform.position).normalized * forceAmount);
             playerBody.drag = 2.0f;
             targetPoint = grapplePoint;
+            if (!wubWubWubSoundPlayer.isPlaying) {
+                wubWubWubSoundPlayer.Play();
+            }
         }
     }
 
@@ -63,5 +69,6 @@ public class GrappleArm : InverseKinArmAtics
     public override void LetGo() {
         isGrappled = false;
         playerBody.drag = 0f;
+        wubWubWubSoundPlayer.Stop();
     }
 }

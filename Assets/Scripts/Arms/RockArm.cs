@@ -10,10 +10,13 @@ public class RockArm : InverseKinArmAtics
     public GameObject handRock;
     public float chargeSpeed = 10f;
     public float reloadTime = 3f;
+    public AudioSource chargeSoundPlayer;
+    public AudioSource shootSoundPlayer;
     private GameObject projectile;
     private float power = 0f;
     private float timeSinceLastShot = 0;
     private Vector3 handRockRotationSpeed = Vector3.zero;
+    
 
     public override void VisualUpdate(Vector3 elbowPosition, Vector3 handPosition, float lowerArmLength)
     {
@@ -28,6 +31,10 @@ public class RockArm : InverseKinArmAtics
 
     public override void Held() {
         if (handRock.activeSelf) {
+            chargeSoundPlayer.pitch = Mathf.Min(chargeSoundPlayer.pitch + 0.005f, 2);
+            if (!chargeSoundPlayer.isPlaying) {
+                chargeSoundPlayer.Play();
+            }
             // charges the shot power
             power += chargeSpeed * Time.deltaTime;
             // makes the model spin faster and faster
@@ -39,6 +46,8 @@ public class RockArm : InverseKinArmAtics
 
     public override void LetGo() {
         if (handRock.activeSelf){
+            chargeSoundPlayer.Stop();
+            shootSoundPlayer.Play();
             // Deletes the old rock
             if (projectile) {
                 Destroy(projectile);
