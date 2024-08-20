@@ -40,8 +40,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void ExitGame(string sceneName) {
-        SceneManager.LoadScene(sceneName);
+    public void ExitGame() {
+        SceneManager.LoadScene (sceneName:"TitleScene");
     }
 
     [SerializeField] Slider volumeSlider;

@@ -85,8 +85,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3923069874279952020}
   - component: {fileID: 3437541257805211812}
-  - component: {fileID: 2209865483924898620}
   - component: {fileID: 670502007466949632}
+  - component: {fileID: 2209865483924898620}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -122,36 +122,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186919273884176876}
   m_CullTransparentMesh: 1
---- !u!114 &2209865483924898620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186919273884176876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dc378f49c78f5cf4eb89e74da105f64b, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &670502007466949632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +178,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2209865483924898620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186919273884176876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: dc378f49c78f5cf4eb89e74da105f64b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1605544830564184534
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,11 +829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2126f14ac234266409f2223db662fbad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  death: {fileID: 8393530180626435628}
   deathImage: {fileID: 2451549290870981300}
-  deathRect: {fileID: 0}
   collectableText: {fileID: 8431852178467683222}
-  canvasRect: {fileID: 0}
 --- !u!1 &3488443717803188198
 GameObject:
   m_ObjectHideFlags: 0
