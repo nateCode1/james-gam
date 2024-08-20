@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
         float newY = oldY;
         if (Input.GetKey(KeyCode.Mouse2)) {
             newX = oldX - Input.GetAxisRaw("Mouse Y") * sensitivity;
-            newX = ClampAngle(newX, -30, 35);
+            newX = ClampAngle(newX, -50, 35);
             newY = oldY + Input.GetAxisRaw("Mouse X") * sensitivity;
         }
         cameraPivotTransform.eulerAngles = new Vector3(newX, newY, 0);
