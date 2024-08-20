@@ -32,6 +32,10 @@ public class Arm : MonoBehaviour
             theBobber.BobberRelease();
             isCasted = true;
         }
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            PlayerPrefs.SetInt("FishingDone", 1);
+            SceneManager.UnloadSceneAsync("FishingMinigame");
+        }
         if (rotational_speed > 60) {
             if(Input.GetMouseButtonUp(0)) {
                 // arm fly off
@@ -55,6 +59,7 @@ public class Arm : MonoBehaviour
                 theBobber.GetComponent<BoxCollider2D>().enabled = false;
                 timeElapsed += Time.deltaTime;
                 if(timeElapsed > 2f) {
+                    PlayerPrefs.SetInt("FishingDone", 1);
                     SceneManager.UnloadSceneAsync("FishingMinigame");
                 }
             }
