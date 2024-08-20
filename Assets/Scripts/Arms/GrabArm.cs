@@ -62,6 +62,12 @@ public class GrabArm : InverseKinArmAtics
         if (Physics.CheckSphere(actualHandPos, maxDistance, grabLayers)){
             grabPoint = actualHandPos;
             attachedObject = hitObject;
+
+            Lever lever = attachedObject.GetComponent<Lever>();
+            if (lever != null) {
+                lever.Flip();
+            }
+
             isGrabbed = true;
         }
     }
